@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Raw Selection</title>
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css"/>
+    <script type="text/javascript" src="../../lib/d3.js"></script>
+</head>
+
+<body>
+<p>这个例子主要是学习d3如何操控一个表格，特别是对表头和内容行的处理非常灵活、便捷。</p>
+<p>注意：selectAll利用css的选择器得到dom树上的元素，返回的是对象数组rows，它的第一个下标通常为0，所以可以省略，直接对返回值进行迭代，请看下一节。</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Time</th>
+        <th>Type</th>
+        <th>Amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>10:22</td>
+        <td>Purchase</td>
+        <td>$10.00</td>
+    </tr>
+    <tr>
+        <td>12:12</td>
+        <td>Purchase</td>
+        <td>$12.50</td>
+    </tr>
+    <tr>
+        <td>14:11</td>
+        <td>Expense</td>
+        <td>$9.70</td>
+    </tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+    var rows = d3.selectAll("tr"); // <-- A
+
+    var headerElement = rows[0][0]; // <-- B
+    console.log("headerElement is an instance of DOM Element: " 
+        + (headerElement instanceof Element));
+
+    d3.select(headerElement).attr("class", "table-header"); // <-- C
+    console.log("d3.select(headerElement) is an instanceof of d3.selection: " 
+        + (d3.select(headerElement) instanceof d3.selection));
+
+    d3.select(rows[0][1]).attr("class", "table-row-odd"); // <-- D
+    d3.select(rows[0][2]).attr("class", "table-row-even"); // <-- E
+    d3.select(rows[0][3]).attr("class", "table-row-odd"); // <-- F
+</script>
+
+</body>
+</html>

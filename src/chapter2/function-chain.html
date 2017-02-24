@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+    <title>Selection Function Chain</title>
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css"/>
+    <script type="text/javascript" src="../../lib/d3.js"></script>
+</head>
+
+<body>
+<div>这个例子主要是学习d3操控dom树单个对象的方法，和jquery差不多。但是它更加优美，因为所有的操作都会返回被操控的对象本身，所以可以级联操作。</div>
+<script type="text/javascript">
+    var body = d3.select("body"); // <-- A
+
+    body.append("section") // <-- B
+            .attr("id", "section1") // <-- C
+          .append("div") // <-- D
+              .attr("class", "blue box") // <-- E
+          .append("p") // <-- F
+              .text("dynamic blue box"); // <-- G
+
+    body.append("section")
+            .attr("id", "section2")
+          .append("div")
+              .attr("class", "red box")
+          .append("p")
+              .text("dynamic red box");
+</script>
+
+</body>
+</html>

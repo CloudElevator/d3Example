@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Array as Data</title>
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css"/>
+    <script type="text/javascript" src="../../lib/d3.js"></script>
+</head>
+
+<body>
+
+<p>这个例子学习如何将数据绑定data()到页面元素中去:</p>
+<p>1、enter()添加；<br>2、select().text(function(d){})修改；<br>3、exit().remove()删除</p>
+<script type="text/javascript">
+    var data = [10, 15, 30, 50, 80, 65, 55, 30, 20, 10, 8]; // <- A
+
+    function render(data) { // <- B
+        // Enter
+        d3.select("body").selectAll("div.h-bar") // <- C 查找body下所有class为h-bar的div，没有就返回undefined
+            .data(data) // <- D 为所有元素（包括占位符）与data中的数据，建立联系，如果data中的数量大于元素个数，就产生相应个数的占位符
+            .enter() // <- E    data中有多少条记录，这里就执行多少次。
+                .append("div") // <- F   如果元素是占位符就执行后面的语句（添加一个div），否则就跳过
+                    .attr("class", "h-bar")
+                .append("i").attr("height","20px")
+                .append("span"); // <- G d3会自动在最后一片叶子节点上绑定数据
+
+        // Update
+        d3.select("body").selectAll("div.h-bar")
+            .data(data) 
+                .style("width", function (d) { // <- H
+                    return (d * 3) + "px";
+                })
+                .select("span") // <- I
+                    .text(function (d) { //可以对被绑定的数据进行处理，最后返回的就是显示出来的样式，比如日期类型，绑定时是long型，这里处理后可以变成日期字符串
+                        return d;
+                    });
+                
+        // Exit
+        d3.select("body").selectAll("div.h-bar")
+            .data(data)
+            .exit() // <- J 去掉页面元素中没有和data对应的元素
+                .remove();        
+    }
+
+    setInterval(function () { // <- K
+        data.shift();//shift()方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。
+        data.push(Math.round(Math.random() * 100));//push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度。
+        render(data);
+    }, 1500);
+
+    render(data);
+</script>
+
+</body>
+
+</html>

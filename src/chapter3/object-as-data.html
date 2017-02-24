@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Object as Data</title>
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css"/>
+    <script type="text/javascript" src="../../lib/d3.js"></script>
+</head>
+
+<body>
+
+<p>这个例子学习如何利用线性比例尺约束值域，比如最大值和最小值的差太大了，页面上若按等比例显示不好看，那么就可以用比例尺限制一下最大值和最小值，这样其他值会等比例的缩放，看起来就舒服多了。</p>
+<script type="text/javascript">
+    var data = [ // <- A
+        {width: 10, color: 23},{width: 15, color: 33},
+        {width: 30, color: 40},{width: 50, color: 60},
+        {width: 80, color: 22},{width: 65, color: 10},
+        {width: 55, color: 5},{width: 30, color: 30},
+        {width: 20, color: 60},{width: 10, color: 90},
+        {width: 8, color: 10}
+    ];
+    
+    var colorScale = d3.scale.linear() // 使用线性比例尺
+        .domain([0, 100])             //定义域为0-100，如果是3个值，如 [0,20,100] 表示有两个定义域0-20和20-100，这样就必须设定一个3值的值域才行。
+        .range(["#add8e6", "blue"]); // <- B 值域，表示颜色从#add8e6到blue中选择，个数必须与定义域一致。
+
+    function render(data) {
+        d3.select("body").selectAll("div.h-bar")
+            .data(data)
+            .enter().append("div")
+                .attr("class", "h-bar")                
+            .append("span");
+
+        d3.select("body").selectAll("div.h-bar")
+            .data(data)
+            .exit().remove();
+
+        d3.select("body").selectAll("div.h-bar")
+            .data(data)
+                .attr("class", "h-bar")
+                .style("width", function (d) { // <- C
+                    return (d.width * 5) + "px"; // <- D
+                })
+                .style("background-color", function(d){
+                    return colorScale(d.color); // <- E 设置背景颜色
+                })
+            .select("span")
+                .text(function (d) {
+                    return d.width; // <- F 显示绑定对象的wdith属性
+                });
+    }
+
+    function randomValue() {
+        return Math.round(Math.random() * 100);
+    }
+
+    setInterval(function () {
+        data.shift();
+        data.push({width: randomValue(), color: randomValue()});
+        render(data);
+    }, 1500);
+
+    render(data);
+</script>
+
+</body>
+
+</html>
