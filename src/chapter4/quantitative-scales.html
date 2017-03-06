@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+<p>这个例子学习几种带值域范围的比例尺：线性、指数、对数</p>
 <div id="linear" class="clear"><span>n</span></div>
 <div id="linear-capped" class="clear">
     <span>1 &lt;= a*n + b &lt;= 20</span>
@@ -33,11 +33,11 @@
         .domain([1, 10])        
         .range([1, 20]); // <-D
         
-    var pow = d3.scale.pow().exponent(2); // <-E
+    var pow = d3.scale.pow().exponent(2); // <-E exponent 设置指数
     var powCapped = d3.scale.pow() // <-F
         .exponent(2)
-        .domain([1, 10])
-        .rangeRound([1, 10]); // <-G
+        .domain([1, 10])  //底数范围
+        .rangeRound([1, 10]); // <-G 设置scale的输出范围（值域范围），并四舍五入。
         
     var log = d3.scale.log(); // <-H
     var logCapped = d3.scale.log() // <-I

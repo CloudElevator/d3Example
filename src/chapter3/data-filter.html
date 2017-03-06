@@ -51,7 +51,7 @@
                 });
 
         d3.select("body").selectAll("div.h-bar")
-                .filter(function (d, i) { // <-E 根据传入参数过滤元素
+                .filter(function (d, i) { // <-E 根据传入参数过滤元素，d表示第i行数据，i表示行号，从0开始。
                     return d.category == category;
                 })
                 .classed("selected", true);//所有被过滤出的元素添加selected属性

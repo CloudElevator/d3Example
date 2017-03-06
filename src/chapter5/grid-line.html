@@ -9,38 +9,42 @@
 
 <body>
 
+<p>这个例子学习Svg的基本方法：xoy平面坐标
+svg中的图对象类似一个一个的html标签，而且可以在同一区域任意叠加的，因此，画一个坐标平面实际上就是在相应的位置上画线。
+    需要注意的就是x、y轴上需要显示坐标值
+</p>
 <script type="text/javascript">
     var height = 500, 
         width = 500, 
-        margin = 25;       
-    
+        margin = 25;   //坐标间隔
+    //划定svg区域
     var svg = d3.select("body").append("svg")
             .attr("class", "axis")
             .attr("width", width)
             .attr("height", height);
     
-    function renderXAxis(){
+    function renderXAxis(){//画横线
         var axisLength = width - 2 * margin;
     
         var scale = d3.scale.linear()
                         .domain([0, 100])
-                        .range([0, axisLength]);
+                        .range([0, axisLength]);//限定x范围
         
         var xAxis = d3.svg.axis()
                 .scale(scale)
-                .orient("bottom");
+                .orient("bottom");//显示x轴坐标值的位置
                 
         svg.append("g")       
-            .attr("class", "x-axis")
-            .attr("transform", function(){ // <-A
-                return "translate(" + margin + "," + (height - margin) + ")";
+            .attr("class", "x-axis")       //给svg添加一个x-axis的样式
+            .attr("transform", function(){ // <-A 给svg添加偏移量
+                return "translate(" + margin + "," + (height - margin) + ")";//向右25，向下475
             })
-            .call(xAxis);
+            .call(xAxis);//画x轴
             
-        d3.selectAll("g.x-axis g.tick") // <-B
-            .append("line") // <-C
-                .classed("grid-line", true)
-                .attr("x1", 0) // <-D
+        d3.selectAll("g.x-axis g.tick") // <-B 添加tick样式
+            .append("line") // <-C     //添加直线
+                .classed("grid-line", true)   //设定直线样式
+                .attr("x1", 0)// <-D        直线的4个参数x1,y1,x2,y2
                 .attr("y1", 0)
                 .attr("x2", 0)
                 .attr("y2", - (height - 2 * margin));  // <-E

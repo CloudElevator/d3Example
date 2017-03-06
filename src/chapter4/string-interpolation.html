@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+<p>这个例子学习字号比例尺</p>
 <div id="font" class="clear">
     <span>Font Interpolation<br></span>
 </div>
@@ -18,7 +18,7 @@
 
     var sizeScale = d3.scale.linear() // <-A
         .domain([0, max])
-        .range([  // <-B
+        .range([  // <-B d3会自动找出字体中的数字，但是其他字符必须相同
             "italic bold 12px/30px Georgia, serif", 
             "italic bold 120px/180px Georgia, serif"
         ]);

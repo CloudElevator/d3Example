@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+<p>这个例子学习几种颜色比例尺</p>
 <div id="alphabet" class="clear">
     <span>Ordinal Scale with Alphabet<br></span>
     <span>Mapping [1..10] to ["a".."j"]<br></span>
@@ -29,13 +29,17 @@
     <span>Ordinal Color Scale Category 20c<br></span>
     <span>Mapping [1..10] to category 20c colors<br></span>
 </div>
+<div id="category20c2" class="clear">
+    <span>Ordinal Color Scale Category 20c<br></span>
+    <span>Mapping [1..10] to category 20c colors<br></span>
+</div>
 
 <script type="text/javascript">
     var max = 10, data = [];
 
     for (var i = 0; i < max; ++i) data.push(i); // <-A
     
-    var alphabet = d3.scale.ordinal() // <-B
+    var alphabet = d3.scale.ordinal() // <-B ordinal是顺序、依次的意思
         .domain(data)
         .range(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]);
         
@@ -59,11 +63,11 @@
                 });
     }
 
-    render(data, alphabet, "#alphabet"); // <-F
-    render(data, d3.scale.category10(), "#category10");
-    render(data, d3.scale.category20(), "#category20");
-    render(data, d3.scale.category20b(), "#category20b");
-    render(data, d3.scale.category20c(), "#category20c"); // <-G
+    render(data, alphabet, "#alphabet"); // <-F 这个是自定义的映射
+    render(data, d3.scale.category10(), "#category10");//系统自带映射 构造一个有10种颜色的序数比例尺。这是一个固定序列
+    render(data, d3.scale.category20(), "#category20"); //构造一个有20种颜色的序数比例尺。这是一个固定序列
+    render(data, d3.scale.category20c(), "#category20c"); // <-G  构造一个另外20种颜色的序数比例尺。这是一个固定序列
+    render(data, d3.scale.category20b(), "#category20b");// 构造一个另外20种颜色的序数比例尺。这是一个固定序列
 </script>
 
 </body>

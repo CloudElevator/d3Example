@@ -9,6 +9,7 @@
 
 <body>
 
+<p>这个例子学习怎样自定义插值器</p>
 <div id="dollar" class="clear">
     <span>Custom Dollar Interpolation<br></span>
 </div>
@@ -17,20 +18,25 @@
 </div>
 
 <script type="text/javascript">
+
     // dollar custom interpolator example from https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_interpolators
-    d3.interpolators.push(function(a, b) { // <-A
+    d3.interpolators.push(function(a, b) { // <-A 定义一个美元金额的插值器，a、b参数表示计算在这两个数之间插入的值。
       var re = /^\$([0-9,.]+)$/, // <-B
-        ma, mb, f = d3.format(",.02f"); 
-      if ((ma = re.exec(a)) && (mb = re.exec(b))) { // <-C
-        a = parseFloat(ma[1]);
+        ma, mb, f = d3.format(",.02f"); //设定精度
+      if ((ma = re.exec(a)) && (mb = re.exec(b))) { // <-C exec(要匹配的字符串) 判断a是否满足re的正则表达式，并返回一个数组，
+                                                    // 第0个元素存放第一次匹配到的字符串，如果没匹配到返回null，
+                                                    // 第i中元素存放第i个子表达式匹配到的字符串，如果有子表达式的话
+        console.log(ma[0]+" "+ma[1]);
+        console.log(mb[0]+" "+mb[1]);
+        a = parseFloat(ma[1]);//第1个子表达式的含义是浮点数，全表达式的含义是以$开头的浮点数
         b = parseFloat(mb[1]) - a;  // <-D
-        return function(t) {  // <-E
-          return "$" + f(a + b * t); // <-F
+        return function(t) {  // <-E 参数t是系统自动计算出来的步长。
+          return "$" + f(a + b * t); // <-F   //自定义插入的值
         };
       }
     });
 
-    d3.interpolators.push(function(a, b) { // <-G
+    d3.interpolators.push(function(a, b) { // <-G 定义
       var re = /^([a-z])$/, ma, mb; // <-H
       if ((ma = re.exec(a)) && (mb = re.exec(b))) { // <-I
         a = a.charCodeAt(0);
@@ -49,11 +55,14 @@
             .domain([0, 27])
             .range(["a", "z"]); // <-M
         
-    function render(scale, selector) {        
+    function render(scale, selector) {      //  scale表示渐变函数，selector表示页面上的控件
         var data = [];
         var max = scale.domain()[1];
         
-        for (var i = 0; i < max; ++i) data.push(i);      
+        for (var i = 0; i < max; ++i){
+         //插值器就是在这个时候被调用的
+            data.push(i);
+        }
         
         d3.select(selector).selectAll("div.cell")
                     .data(data)

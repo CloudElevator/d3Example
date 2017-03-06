@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+<p>这个例子学习Svg的基本方法：坐标</p>
 <div class="control-group">
     <button onclick="renderAll('bottom')">
         horizontal bottom
@@ -42,17 +42,20 @@
     function renderAxis(scale, i, orient){
         var axis = d3.svg.axis() // <-D
             .scale(scale) // <-E
-            .orient(orient) // <-F
-            .ticks(5); // <-G
+            .orient(orient) // <-F //orient设置或者取得轴的方向。bottom 表示字在图的下方
+            .ticks(5); // <-G  //控制轴的刻度如何生成。
         
-        svg.append("g")        
-            .attr("transform", function(){ // <-H
+        svg.append("g")                    //g元素是用于把相关元素进行组合的容器元素。
+            .attr("transform", function(){ // <-H  transform属性用来对一个元素声明一个或多个变换。
+                                          // 它输入一个带有顺序的变换定义列表的<transform-list>值。
+                                          // 每个变换定义由空格或逗号隔开。给元素添加变换看起来如下：
                 if(["top", "bottom"].indexOf(orient) >= 0)
-                    return "translate(" + margin + "," + i * offset + ")";
+                    return "translate(" + margin + "," + i * offset + ")";//translate函数输入一个或两个值得来声明水平和竖直移动值。
+                                                                          //以第一个为例，表示向右移动25，向下移动50，开始画图
                 else
                     return "translate(" + i * offset + ", " + margin + ")";
             })
-            .call(axis); // <-I
+            .call(axis); // <-I call是d3对象的方法，用于调用一个函数
     }
     
     function renderAll(orient){

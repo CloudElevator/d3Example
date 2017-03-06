@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+<p>这个例子学习怎样做渐变背景</p>
 <div id="color" class="clear">
     <span>Linear Color Interpolation<br></span>
 </div>
@@ -19,11 +19,11 @@
 <script type="text/javascript">
     var max = 21, data = [];
 
-    var colorScale = d3.scale.linear() // <-A
+    var colorScale = d3.scale.linear() // <-A定义一个线性颜色范围
         .domain([0, max])
         .range(["white", "#4169e1"]);
 
-    function divergingScale(pivot) { // <-B
+    function divergingScale(pivot) { // <-B 有中心点的颜色渐变
         var divergingColorScale = d3.scale.linear()
             .domain([0, pivot, max]) // <-C
             .range(["white", "#4169e1", "white"]);

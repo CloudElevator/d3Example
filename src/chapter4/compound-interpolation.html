@@ -9,13 +9,14 @@
 
 <body>
 
+<p>这个例子学习怎样在多个维度上做渐变：颜色和高度</p>
 <div id="compound" class="clear">
     <span>Compound Interpolation<br></span>
 </div>
 
 <script type="text/javascript">
     var max = 21, data = [];
-
+//以2的幂次渐变
     var compoundScale = d3.scale.pow()
             .exponent(2)
             .domain([0, max])
@@ -39,10 +40,10 @@
         d3.select(selector).selectAll("div.v-bar")
                 .data(data)
                 .classed("v-bar", true)
-                .style("height", function(d){ // <-D
+                .style("height", function(d){ // <-D 在高度上渐变
                     return scale(d).height;
                 }) 
-                .style("background-color", function(d){ // <-E
+                .style("background-color", function(d){ // <-E 在颜色上渐变
                     return scale(d).color;
                 })
                 .select("span")

@@ -9,6 +9,7 @@
 
 <body>
 
+<p>这个例子学习Svg的基本方法：缩放坐标</p>
 <script type="text/javascript">
     var height = 500, 
         width = 500, 
@@ -20,7 +21,7 @@
             .attr("width", width)
             .attr("height", height);
     
-    function renderXAxis(){
+    function renderXAxis(){//画X轴
         xAxisLength = width - 2 * margin;
     
         var scale = d3.scale.linear()
@@ -29,7 +30,7 @@
         
         xAxis = d3.svg.axis()
                 .scale(scale)
-                .tickSubdivide(1)
+                .tickSubdivide(2)        //这个函数很有用，表示在margin的间隔中插入几个坐标
                 .orient("bottom");
                 
         svg.append("g")       
@@ -40,7 +41,7 @@
             .call(xAxis);
     }
     
-    function renderYAxis(){        
+    function renderYAxis(){  //画Y轴
         yAxisLength = height - 2 * margin;
     
         var scale = d3.scale.linear()
@@ -60,23 +61,23 @@
             .call(yAxis);
     }   
             
-    function rescale(){ // <-A
-        var max = Math.round(Math.random() * 100);
+    function rescale(){ // <-A  缩放
+        var max = Math.round(Math.random() * 100);//一个随机数
         
-        xAxis.scale().domain([0, max]); // <-B
+        xAxis.scale().domain([0, max]); // <-B 重新定义x轴范围
         svg.select("g.x-axis")
             .transition()
             .call(xAxis); // <-C
             
-        yAxis.scale().domain([max, 0]);
+        yAxis.scale().domain([max, 0]);//重新定义y轴范围
         svg.select("g.y-axis")
             .transition()
             .call(yAxis);
         
-        renderXGridlines();
-        renderYGridlines();
+        renderXGridlines();//重新画横线
+        renderYGridlines();//重新画竖线
     }       
-    
+    //画横线
     function renderXGridlines(){
         var lines = d3.selectAll("g.x-axis g.tick")
                 .select("line.grid-line")
@@ -91,7 +92,7 @@
                 .attr("x2", 0)
                 .attr("y2", - yAxisLength); 
     }
-    
+    //画竖线
     function renderYGridlines(){
         var lines = d3.selectAll("g.y-axis g.tick")
                 .select("line.grid-line").remove(); 
