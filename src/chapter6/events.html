@@ -9,6 +9,7 @@
 
 <body>
 
+<p>这个例子学习动画的基本方法：定义启动、停止时的事件</p>
 <script type="text/javascript">
     var body = d3.select("body"), duration = 3000;
 
@@ -19,13 +20,13 @@
             .text("waiting") // <-A
         .transition().duration(duration) // <-B
                 .delay(1000) // <-C
-                .each("start", function(){ // <-D
+                .each("start", function(){ // <-D 设定启动时的事件
                     console.log(arguments);
                     d3.select(this).text(function (d, i) {
                         return "transitioning";
                     });
                 })
-                .each("end", function(){ // <-E
+                .each("end", function(){ // <-E 设定结束时的事件
                     d3.select(this).text(function (d, i) {
                         return "done";
                     });

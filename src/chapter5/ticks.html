@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<p>这个例子学习Svg的基本方法：缩放坐标</p>
+<p>这个例子学习Svg的基本方法：刻度与标签</p>
 <script type="text/javascript">
     var height = 500, 
         width = 500, 
@@ -24,16 +24,16 @@
     
     var axis = d3.svg.axis()
             .scale(scale)
-            .ticks(5)
-            .tickSubdivide(5) // <-A
-            .tickPadding(10) // <-B
-            .tickFormat(function(v){ // <-C
-                return v + "%";
+            .ticks(5)         //总共显示的标签数
+            .tickSubdivide(5) // <-A 两个标签之间插入的刻度数
+            .tickPadding(10) // <-B 标签与刻度的距离
+            .tickFormat(function(v){ // <-C  还可以利用tickValues([values])填写标签
+                return v + "%";     //标签标题
             });
         
     svg.append("g")        
         .attr("transform", function(){
-            return "translate(" + margin + "," + margin + ")";
+            return "translate(" + margin + "," + margin + ")"; //设置svg的初始位置
         })
         .call(axis);
 </script>

@@ -9,6 +9,7 @@
 
 <body>
 
+<p>这个例子学习动画的基本方法：动画中实现过滤</p>
 <script type="text/javascript">
     var data = ["Cat", "Dog", "Cat", "Dog", "Cat", "Dog", "Cat", "Dog"],
         duration = 1500;
@@ -30,7 +31,7 @@
             .transition() // <- A
                 .duration(duration)
                     .style("left", "10px")
-            .filter(function(d){return d == "Cat";}) // <- B
+            .filter(function(d){return d == "Cat";}) // <- B 部分绑定的对象执行后续动作
                 .transition() // <- C
                 .duration(duration)
                     .style("left", "500px");

@@ -9,8 +9,9 @@
 
 <body>
 
+<p>这个例子学习动画的基本方法：ease方法可用的缓冲函数，以及自定义一个缓冲函数</p>
 <script type="text/javascript">
-    var data = [ // <-A
+    var data = [ // <-A 这里列出所有可用的缓冲函数
 			"linear", "cubic", "cubic-in-out", 
 			"sin", "sin-out", "exp", "circle", "back", 
 			"bounce",
@@ -18,7 +19,7 @@
 				return t * t;
 			}
 		],
-        colors = d3.scale.category20();
+        colors = d3.scale.category20();//给出20种颜色
 
     d3.select("body").selectAll("div")
             .data(data) // <-C
@@ -26,7 +27,7 @@
         .append("div")
             .attr("class", "fixed-cell")
             .style("top", function (d, i) {
-                return i * 40 + "px";
+                return (i+1) * 40 + "px";
             })
             .style("background-color", function (d, i) {
                 return colors(i);
@@ -38,11 +39,12 @@
                 return d;
             });
 
+    //批量设置动画过渡效果
     d3.selectAll("div").each(function(d){
         d3.select(this)
-			.transition().ease(d) // <-D
+			.transition().ease(d) // <-D使用不同的缓冲函数
 			.duration(1500)
-			.style("left", "10px");
+			.style("left", "10px");//从500px移动到10px，因为缓冲函数不同，所有色块的移动速度不同
     });
 </script>
 

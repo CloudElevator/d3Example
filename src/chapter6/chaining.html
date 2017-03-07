@@ -9,11 +9,12 @@
 
 <body>
 
+<p>这个例子学习动画的基本方法：形状、位置和过渡该形状/位置的时间</p>
 <script type="text/javascript">
     var body = d3.select("body");
         
     function teleport(s){
-        s.transition().duration(300) // <-A
+        s.transition().duration(300) // <-A 用300毫秒过渡
             .style("width", "200px")
             .style("height", "1px")
         .transition().duration(100) // <-B
