@@ -3,7 +3,7 @@
  "name": "flare",
  "children": [
   {
-   "name": "analytics",
+   "name": "analytics重庆有作三山上有座庙，庙里有个老和尚画一个小和尚",
    "children": [
     {
      "name": "cluster",
@@ -118,8 +118,8 @@
     {"name": "And", "size": 1027},
     {"name": "Arithmetic", "size": 3891},
     {"name": "Average", "size": 891},
-    {"name": "BinaryExpression", "size": 2893},
-    {"name": "Comparison", "size": 5103},
+    {"name": "BinaryExpressionAggregateExpressionAggregateExpression", "size": 2893},
+    {"name": "Comparison重庆有作三山上有座庙，庙里有个老和尚画一个小和尚", "size": 5103},
     {"name": "CompositeExpression", "size": 3677},
     {"name": "Count", "size": 781},
     {"name": "DateUtil", "size": 4141},

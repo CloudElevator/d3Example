@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>自动创建表格</title>
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css"/>
+    <script type="text/javascript" src="../../lib/d3.js"></script>
+</head>
+
+<body>
+
+<p>这个例子学习自动创建一个简单的表格</p>
+<script type="text/javascript">
+    var data = [
+        {
+            id: 1,
+            userName: "小强",
+            gender: "男",
+            age: 18,
+            isOnline: true,
+            signinTime: 145867574
+        },
+        {
+            id: 2,
+            userName: "小强2",
+            gender: "男2",
+            age: 28,
+            isOnline: true,
+            signinTime: 145837574
+        },
+        {
+            id: 1,
+            userName: "小强3",
+            gender: "男3",
+            age: 12,
+            isOnline: false,
+            signinTime: 145863574
+        },
+        {
+            id: 1,
+            userName: "小强6",
+            gender: "6男",
+            age: 58,
+            isOnline: false,
+            signinTime: 145827574
+        },
+        {
+            id: 1,
+            userName: "小45强",
+            gender: "而",
+            age: 18,
+            isOnline: true,
+            signinTime: 145867574
+        },
+        {
+            id: 1,
+            userName: "小强",
+            gender: "男",
+            age: 18,
+            isOnline: true,
+            signinTime: 145867574
+        },
+        {
+            id: 1,
+            userName: "有双引",
+            gender: "且",
+            age: 18,
+            isOnline: true,
+            signinTime: 145867574
+        },
+        {
+            id: 1,
+            userName: "来和",
+            gender: "男",
+            age: 18,
+            isOnline: true,
+            signinTime: 145867574
+        }
+    ];
+    var pageCount = 10;//每页行数
+    /**显示第column列的标题*/
+    var ColumnTitleArray = ["序号", "主鍵", "姓名", "性別", "年龄", "在线", "登录时间"];
+
+    /**显示某一行的值*/
+    var showARowValue = function (row, obj, index) {
+        d3.select(row).append("td").html(index + 1);
+        d3.select(row).append("td").html(obj.id);
+        d3.select(row).append("td").html(obj.userName);
+        d3.select(row).append("td").html(obj.gender);
+        d3.select(row).append("td").html(obj.age);
+        d3.select(row).append("td").html(obj.isOnline);
+        d3.select(row).append("td").html(obj.signinTime);
+    };
+    /**提交排序的函数*/
+    var orderData = function () {
+
+    };
+    /**显示第column列的统计值*/
+    var showStColumnCellValue = function (column, dataArray) {
+        switch (column) {
+            case 0:
+                return "合计";
+                break;
+            case 5:
+                return dataArray.length;
+                break;
+            default :
+                return "";
+        }
+    };
+</script>
+<script type="text/javascript">
+    var duration = 1500;
+    function render(){
+        var table = d3.select("body").append("table");
+        var th = table.append("tr");
+        var tbody = table.append("tbody");
+
+        th.selectAll("th").data(ColumnTitleArray)
+                .enter()
+                .append("th")
+                .attr("width","40px")
+                .style("background-color", "steelblue")
+                .style("color", "white")
+                .text(function (d) {
+                    return d;
+                });
+
+
+        tbody.selectAll("tr").data(data)
+                .enter()
+                .append("tr").each(function (d, i) {
+                    showARowValue(this, d, i);
+                });
+    }
+
+    render();
+
+</script>
+
+</body>
+
+</html>
