@@ -5,13 +5,15 @@
     <title>自动创建表格</title>
     <link rel="stylesheet" type="text/css" href="../../css/styles.css"/>
     <script type="text/javascript" src="../../lib/d3.js"></script>
-    <script type="text/javascript" src="js/table.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/simpletable.js" charset="utf-8"></script>
 </head>
 
 <body>
 
 <p>这个例子学习自动创建一个简单的表格</p>
+
 <div class="tableDiv"></div>
+<div class="tableDiv2"></div>
 <script type="text/javascript">
     var data = [
         {
@@ -79,7 +81,6 @@
             signinTime: 145867574
         }
     ];
-    var pageCount = 10;//每页行数
     /**显示第column列的标题*/
     var ColumnTitleArray = ["序号", "主鍵", "姓名", "性別", "年龄", "在线", "登录时间"];
 
@@ -92,11 +93,25 @@
         d3.select(row).append("td").html(obj.gender);
         d3.select(row).append("td").html(obj.age);
         d3.select(row).append("td").html(obj.isOnline);
-        d3.select(row).append("td").html(obj.signinTime);
+        if (index == 3) {
+            var table2Title = ColumnTitleArray;
+            table2Title[1] = "你是谁";
+            var td = d3.select(row).append("td");
+            var d3Table2 = createTableByD3(td).renderTh(table2Title).renderTBody(data, showARowValue2).fillTableFooter(fillTableFooterFunc);
+        } else {
+            d3.select(row).append("td").html(obj.signinTime);
+        }
     };
-    /**提交排序的函数*/
-    var orderData = function () {
-
+    /**显示某一行的值*/
+    var showARowValue2 = function (row, obj, index) {
+        d3.select(row).html("");
+        d3.select(row).append("td").html(index + 1);
+        d3.select(row).append("td").html(obj.id);
+        d3.select(row).append("td").html(obj.userName);
+        d3.select(row).append("td").html(obj.gender);
+        d3.select(row).append("td").html(obj.age);
+        d3.select(row).append("td").html(obj.isOnline);
+        d3.select(row).append("td").html(obj.signinTime);
     };
     /**显示页脚的统计值*/
     var fillTableFooterFunc = function (tfoot) {
@@ -116,23 +131,23 @@
     var update = function () {
         ColumnTitleArray[2] = '另一個表头';
         data[2].userName = '我心飞翔';
-        d3Table.thead.style("background-color","blue");
+        d3Table.thead.style("background-color", "blue");
         d3Table.renderTh(ColumnTitleArray).renderTBody(data, showARowValue);
     }
     var refresh = function () {
         ColumnTitleArray[2] = '姓名';
         data[2].userName = '小强3';
-        d3Table.thead.style("background-color","");
+        d3Table.thead.style("background-color", "");
         d3Table.renderTh(ColumnTitleArray).renderTBody(data, showARowValue).fillTableFooter(fillTableFooterFunc);
     }
     var nonTitle = function () {
         var anotherColumnTitleArray = [];
         d3Table.renderTh(anotherColumnTitleArray).fillTableFooter();
     }
-</script>
 
-</body>
+</script>
 <button onclick="update()">修改一下</button>
 <button onclick="nonTitle()">无表头</button>
 <button onclick="refresh()">还原</button>
+</body>
 </html>
