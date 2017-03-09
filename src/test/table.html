@@ -83,6 +83,7 @@
 
     /**显示某一行的值*/
     var showARowValue = function (row, obj, index) {
+        d3.select(row).html("");
         d3.select(row).append("td").html(index + 1);
         d3.select(row).append("td").html(obj.id);
         d3.select(row).append("td").html(obj.userName);
@@ -108,20 +109,27 @@
                 return "";
         }
     };
+    var update = function () {
+        ColumnTitleArray[2]= '另一個表头';
+        data[2].userName = '我心飞翔';
+        render();
+    }
+    var refresh = function () {
+        ColumnTitleArray[2]= '姓名';
+        data[2].userName = '小强3';
+        render();
+    }
 </script>
 <script type="text/javascript">
     var duration = 1500;
-    function render(){
         var table = d3.select("body").append("table");
         var th = table.append("tr");
         var tbody = table.append("tbody");
+    function render() {
 
         th.selectAll("th").data(ColumnTitleArray)
                 .enter()
                 .append("th")
-                .attr("width","40px")
-                .style("background-color", "steelblue")
-                .style("color", "white")
                 .text(function (d) {
                     return d;
                 });
@@ -132,12 +140,31 @@
                 .append("tr").each(function (d, i) {
                     showARowValue(this, d, i);
                 });
-    }
 
+        // Update
+        th.selectAll("th").data(ColumnTitleArray)
+                .text(function (d) {
+                    return d;
+                });
+        tbody.selectAll("tr").data(data)
+                .each(function (d, i) {
+                    showARowValue(this, d, i);
+                });
+
+        // Exit
+        th.selectAll("th").data(ColumnTitleArray)
+                .exit() // <- J
+                .remove();
+        tbody.selectAll("tr").data(data)
+                .exit() // <- J
+                .remove();
+    }
     render();
+
 
 </script>
 
 </body>
-
+<button onclick="update()">修改一下</button>
+<button onclick="refresh()">还原</button>
 </html>
