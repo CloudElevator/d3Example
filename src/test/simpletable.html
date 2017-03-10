@@ -81,73 +81,95 @@
             signinTime: 145867574
         }
     ];
-    /**显示第column列的标题*/
-    var ColumnTitleArray = ["序号", "主鍵", "姓名", "性別", "年龄", "在线", "登录时间"];
+
 
     /**显示某一行的值*/
-    var showARowValue = function (row, obj, index) {
-        d3.select(row).html("");
-        d3.select(row).append("td").html(index + 1);
-        d3.select(row).append("td").html(obj.id);
-        d3.select(row).append("td").html(obj.userName);
-        d3.select(row).append("td").html(obj.gender);
-        d3.select(row).append("td").html(obj.age);
-        d3.select(row).append("td").html(obj.isOnline);
-        if (index == 3) {
-            var table2Title = ColumnTitleArray;
-            table2Title[1] = "你是谁";
-            var td = d3.select(row).append("td");
-            var d3Table2 = createTableByD3(td).renderTh(table2Title).renderTBody(data, showARowValue2).fillTableFooter(fillTableFooterFunc);
-        } else {
-            d3.select(row).append("td").html(obj.signinTime);
+    var showARowValue = function (rowIndex, oneColumnTitle, oneRowData, td) {
+        if (oneColumnTitle == "Index") {
+            return rowIndex + 1;
+        } else if (rowIndex == 3 && oneColumnTitle == "signinTime") {
+            //创建一个子表
+            var d3Table2 = createTableByD3(td);
+            d3Table2.displayColumnArray = d3Table.copyDisplayColumnArray();
+            d3Table2.appendTableTitle("id", "你是谁");
+            d3Table2.renderTBody(data, showARowValue2).fillTableFooter(fillTableFooterFunc);
+            return null;
+        }
+        else {
+            return oneRowData[oneColumnTitle];
         }
     };
     /**显示某一行的值*/
-    var showARowValue2 = function (row, obj, index) {
-        d3.select(row).html("");
-        d3.select(row).append("td").html(index + 1);
-        d3.select(row).append("td").html(obj.id);
-        d3.select(row).append("td").html(obj.userName);
-        d3.select(row).append("td").html(obj.gender);
-        d3.select(row).append("td").html(obj.age);
-        d3.select(row).append("td").html(obj.isOnline);
-        d3.select(row).append("td").html(obj.signinTime);
+    var showARowValue2 = function (rowIndex, oneColumnTitle, oneRowData) {
+        if (oneColumnTitle == "Index") {
+            return rowIndex + 1;
+        } else {
+            return oneRowData[oneColumnTitle];
+        }
     };
     /**显示页脚的统计值*/
-    var fillTableFooterFunc = function (tfoot) {
-        tfoot.html("");
-        tfoot.append("td").attr("colspan", 2).attr("align", "right").html("合计：");
-        tfoot.append("td").html("10人");
-        tfoot.append("td").html("男3:女7");
-        tfoot.append("td").html("平均27岁");
-        tfoot.append("td").html("3人在线");
-        tfoot.append("td").html("");
+    var fillTableFooterFunc = function (td, columnField, index, columnLength) {
+        if (index == 0) {
+            if (columnLength > 5) {
+                td.attr("colspan", 2);
+                columnLength--;
+            }
+            td.attr("align", "right");
+            return "合计：";
+        } else if (columnField == "userName") {
+            return "10人";
+        }
+        else if (columnField == "gender") {
+            return "男3:女7";
+        }
+        else if (columnField == "age") {
+            return "平均27岁";
+        }
+        else if (columnField == "isOnline") {
+            return "3人在线";
+        } else {
+            td.remove();
+            return null;
+        }
     };
 
 </script>
 <script type="text/javascript">
+    /**显示第column列的标题*/
 
-    var d3Table = createTableByD3("body div.tableDiv").renderTh(ColumnTitleArray).renderTBody(data, showARowValue).fillTableFooter(fillTableFooterFunc);
+    var d3Table = createTableByD3("body div.tableDiv");
+    d3Table.appendTableTitle("Index", "序号").appendTableTitle("id", "主鍵").appendTableTitle("userName", "姓名")
+            .appendTableTitle("gender", "性別").appendTableTitle("age", "年龄")
+            .appendTableTitle("isOnline", "在线").appendTableTitle("signinTime", "登录时间");
+    d3Table.renderTBody(data, showARowValue).fillTableFooter(fillTableFooterFunc);
     var update = function () {
-        ColumnTitleArray[2] = '另一個表头';
+        d3Table.appendTableTitle("userName", "另一個表头");
         data[2].userName = '我心飞翔';
         d3Table.thead.style("background-color", "blue");
-        d3Table.renderTh(ColumnTitleArray).renderTBody(data, showARowValue);
+        d3Table.renderTBody(data, showARowValue);
     }
     var refresh = function () {
-        ColumnTitleArray[2] = '姓名';
+        d3Table.showTableHeader = true;
+        d3Table.appendTableTitle("Index", "序号", 0).appendTableTitle("id", "主鍵", 1).appendTableTitle("userName", "姓名", 2)
+                .appendTableTitle("gender", "性別", 3).appendTableTitle("age", "年龄", 4)
+                .appendTableTitle("isOnline", "在线", 5).appendTableTitle("signinTime", "登录时间", 6);
         data[2].userName = '小强3';
         d3Table.thead.style("background-color", "");
-        d3Table.renderTh(ColumnTitleArray).renderTBody(data, showARowValue).fillTableFooter(fillTableFooterFunc);
+        d3Table.renderTBody(data, showARowValue).fillTableFooter(fillTableFooterFunc);
     }
     var nonTitle = function () {
-        var anotherColumnTitleArray = [];
-        d3Table.renderTh(anotherColumnTitleArray).fillTableFooter();
+        d3Table.showTableHeader = false;
+        d3Table.renderTh().fillTableFooter();
     }
-
+    var hidenColumn = function () {
+        d3Table.showTableHeader = true;
+        d3Table.appendTableTitle("Index", "").appendTableTitle("isOnline", "");
+        d3Table.renderTBody(data, showARowValue).fillTableFooter(fillTableFooterFunc);
+    }
 </script>
 <button onclick="update()">修改一下</button>
 <button onclick="nonTitle()">无表头</button>
+<button onclick="hidenColumn()">隐藏部分列</button>
 <button onclick="refresh()">还原</button>
 </body>
 </html>
