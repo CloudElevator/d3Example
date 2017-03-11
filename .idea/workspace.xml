@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5827cef7-a6dc-422a-9fe5-606c0840bac0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/simpletable.html" afterPath="$PROJECT_DIR$/src/test/simpletable.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/js/simpletable.js" afterPath="$PROJECT_DIR$/src/test/js/simpletable.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="5827cef7-a6dc-422a-9fe5-606c0840bac0" name="Default" comment="" />
     <ignored path="d3-cookbook.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,19 +25,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/js/simpletable.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="celltable.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/js/celltable.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.76870745">
-              <caret line="93" column="17" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
+              <caret line="112" column="5" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -52,7 +36,7 @@
       <file leaf-file-name="filtering.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/chapter6/filtering.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.692307">
+            <state vertical-scroll-proportion="0.0">
               <caret line="33" column="52" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="52" />
               <folding />
             </state>
@@ -62,37 +46,30 @@
       <file leaf-file-name="celltable.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/celltable.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.923077">
-              <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-              <folding>
-                <marker date="1489140133415" expanded="true" signature="483:501" placeholder="/**...*/" />
-                <marker date="1489140133415" expanded="true" signature="557:782" placeholder="{...}" />
-                <marker date="1489140133415" expanded="true" signature="812:967" placeholder="{...}" />
-                <marker date="1489140133415" expanded="true" signature="1030:1142" placeholder="{...}" />
-                <marker date="1489140133415" expanded="true" signature="1078:1114" placeholder="{...}" />
-                <marker date="1489140133415" expanded="true" signature="1205:1340" placeholder="{...}" />
-                <marker date="1489140133415" expanded="true" signature="1255:1334" placeholder="{...}" />
-                <marker date="1489140133415" expanded="true" signature="1368:1476" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dc.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/dc.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="1" />
+            <state vertical-scroll-proportion="-7.7941175">
+              <caret line="24" column="69" selection-start-line="24" selection-start-column="69" selection-end-line="25" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="simpletable.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="celltable.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/js/celltable.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="106" column="58" selection-start-line="106" selection-start-column="58" selection-end-line="106" selection-end-column="58" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="simpletable.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/simpletable.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.923077">
-              <caret line="147" column="29" selection-start-line="147" selection-start-column="29" selection-end-line="147" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.6362434">
+              <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -143,10 +120,10 @@
         <option value="$PROJECT_DIR$/src/chapter9/tree.html" />
         <option value="$PROJECT_DIR$/src/test/js/table.js" />
         <option value="$PROJECT_DIR$/src/test/table.html" />
-        <option value="$PROJECT_DIR$/src/test/simpletable.html" />
         <option value="$PROJECT_DIR$/src/test/js/simpletable.js" />
         <option value="$PROJECT_DIR$/src/test/js/celltable.js" />
         <option value="$PROJECT_DIR$/src/test/celltable.html" />
+        <option value="$PROJECT_DIR$/src/test/simpletable.html" />
       </list>
     </option>
   </component>
@@ -158,10 +135,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1696" />
-    <option name="height" value="1026" />
+    <option name="x" value="-10" />
+    <option name="width" value="1934" />
+    <option name="height" value="1030" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -186,34 +162,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="d3-cookbook">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="d3-cookbook">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="lib">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -570,7 +519,34 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="d3-cookbook">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="d3-cookbook">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="lib">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -600,7 +576,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1328" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
-  <component name="RunManager" selected="JavaScript Debug.celltable.html">
+  <component name="RunManager" selected="JavaScript Debug.simpletable.html">
     <configuration default="false" name="tree.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/chapter9/tree.html">
       <method />
     </configuration>
@@ -739,8 +715,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.celltable.html" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.simpletable.html" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.simpletable.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.celltable.html" />
         <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.table.html" />
         <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.tree.html" />
         <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.treemap.html" />
@@ -768,14 +744,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-10" y="0" width="1934" height="1030" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32715377" sideWeight="0.50238097" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.070866145" sideWeight="0.26725942" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32715377" sideWeight="0.49761903" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.070866145" sideWeight="0.7327406" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1084,7 +1060,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.227758">
           <caret line="51" column="33" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1092,7 +1067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9857651">
           <caret line="41" column="29" selection-start-line="37" selection-start-column="7" selection-end-line="41" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1100,7 +1074,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16903915">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1108,7 +1081,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27224198">
           <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="10" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1116,7 +1088,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.2704626">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1124,33 +1095,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-25.538462">
           <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/js/simpletable.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <caret line="112" column="5" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chapter6/filtering.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.692307">
-          <caret line="33" column="52" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/simpletable.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.923077">
-          <caret line="147" column="29" selection-start-line="147" selection-start-column="29" selection-end-line="147" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1158,7 +1112,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2597865">
           <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1166,34 +1119,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/celltable.html">
+    <entry file="file://$PROJECT_DIR$/src/chapter6/filtering.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.923077">
-          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-          <folding>
-            <marker date="1489140133415" expanded="true" signature="483:501" placeholder="/**...*/" />
-            <marker date="1489140133415" expanded="true" signature="557:782" placeholder="{...}" />
-            <marker date="1489140133415" expanded="true" signature="812:967" placeholder="{...}" />
-            <marker date="1489140133415" expanded="true" signature="1030:1142" placeholder="{...}" />
-            <marker date="1489140133415" expanded="true" signature="1078:1114" placeholder="{...}" />
-            <marker date="1489140133415" expanded="true" signature="1205:1340" placeholder="{...}" />
-            <marker date="1489140133415" expanded="true" signature="1255:1334" placeholder="{...}" />
-            <marker date="1489140133415" expanded="true" signature="1368:1476" placeholder="{...}" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="52" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/js/celltable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76870745">
-          <caret line="93" column="17" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="106" column="58" selection-start-line="106" selection-start-column="58" selection-end-line="106" selection-end-column="58" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/celltable.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.7941175">
+          <caret line="24" column="69" selection-start-line="24" selection-start-column="69" selection-end-line="25" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/simpletable.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6362434">
+          <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>

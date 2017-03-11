@@ -138,6 +138,7 @@
     /**显示第column列的标题*/
 
     var d3Table = createTableByD3("body div.tableDiv");
+    d3Table.table.attr("border", 3);
     d3Table.appendTableTitle("Index", "序号").appendTableTitle("id", "主鍵").appendTableTitle("userName", "姓名")
             .appendTableTitle("gender", "性別").appendTableTitle("age", "年龄")
             .appendTableTitle("isOnline", "在线").appendTableTitle("signinTime", "登录时间");

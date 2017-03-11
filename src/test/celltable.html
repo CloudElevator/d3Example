@@ -10,7 +10,7 @@
 
 <body>
 
-<p>这个例子学习自动创建一个固定行列数的表格</p>
+<p>这个例子学习自动创建一个固定行列数的表格，并且可以自由合并</p>
 <style>
     .redBg {
         background-color: red;
@@ -22,38 +22,38 @@
 
     var d3Table = null;
     var refresh = function () {
-        d3Table = createMatrixTableByD3("body div.tableDiv", 6, 40);
+        d3Table = createMatrixTableByD3("body div.tableDiv", 16, 40);
         d3Table.table.attr("border", 3);
-        d3Table.renderTBody();
 
-        var cell34 = d3Table.getCell(2, 4);
-        cell34.html("abc你好啊！");
+        var cell34 = d3Table.getCell(2, 4).html("abc你好啊！");
     }
     var update = function () {
-        var cell12 = d3Table.getCell(1, 2);
-        cell12.attr("colspan", 2);
-        var cell13 = d3Table.getCell(1, 3);
-        cell13.remove();
+        d3Table.merge(2, 3, 8, 13).html("abcdfr你好啊！");
     }
-    var filterCellFunc = function (td, rowIndex, columnIndex) {
-        if (rowIndex < 3 && columnIndex < 11) {
+
+    var merge2 = function () {
+        d3Table.merge(3, 6, 7, 7).html("abcdf我来啦！");
+    }
+    var filterCellFunc = function (td, rowIndex, columnIndex, isHidden) {
+        if (rowIndex > 8 && rowIndex < 10 && columnIndex < 31) {
             return true;
         }
         return false;
     }
     var handleCellFunc = function (td, rowIndex, columnIndex) {
-        if (rowIndex == 2 && columnIndex == 10) {
-            td.attr("class","redBg");
+        if (rowIndex == 9 && columnIndex == 20) {
+            td.classed("redBg", true);
             td.html("写个字看看");
         }
     }
     var scan = function () {
-        d3Table.renderTd(handleCellFunc,filterCellFunc);
+        d3Table.renderTd(handleCellFunc, filterCellFunc);
         //d3Table.renderTd(handleCellFunc);
     }
     refresh();
 </script>
-<button onclick="update()">修改一下</button>
+<button onclick="update()">做个合并</button>
+<button onclick="merge2()">再做个有冲突的合并</button>
 <button onclick="refresh()">还原</button>
 <button onclick="scan()">扫描一下</button>
 </body>
