@@ -9,6 +9,9 @@
 
 <body>
 
+<p>这个例子学习动画柱状图：根据时间的推移，创建一个新的柱子，并推动柱子往左移动。
+    了解多个元素的整体动画
+</p>
 <script type="text/javascript">
     var id= 0, 
         data = [], 
@@ -21,7 +24,7 @@
     function render(data) {
         var selection = d3.select("body")
                 .selectAll("div.v-bar")
-                .data(data, function(d){return d.id;}); // <-A
+                .data(data, function(d){return d.id;}); // <-A 此处绑定数据不是按照数列的顺序绑定的，而是根据数据中的某个属性来绑定，比如例子中的id属性。
 
         // enter
         selection.enter()
@@ -30,25 +33,25 @@
                     .style("position", "fixed")
                     .style("top", chartHeight + "px")
                     .style("left", function(d, i){
-                        return barLeft(i+1) + "px"; // <-B
+                        return barLeft(i+1) + "px"; // <-B 计算对象的left属性，
                     })
-                    .style("height", "0px") // <-C
+                    .style("height", "0px") // <-C 初始高度都为0
                 .append("span");
 
         // update
         selection
-            .transition().duration(duration) // <-D
+            .transition().duration(duration) // <-D 经过一个延迟
                 .style("top", function (d) { 
-                    return chartHeight - barHeight(d) + "px"; 
+                    return chartHeight - barHeight(d) + "px"; //计算top属性
                 })
                 .style("left", function(d, i){
-                    return barLeft(i) + "px";
+                    return barLeft(i) + "px";//计算left属性
                 })
                 .style("height", function (d) { 
-                    return barHeight(d) + "px"; 
+                    return barHeight(d) + "px"; //计算高度
                 })
                 .select("span")
-                    .text(function (d) {return d.value;});
+                    .text(function (d) {return d.value;});//填入标题
 
         // exit
         selection.exit()

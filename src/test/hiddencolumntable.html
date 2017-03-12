@@ -7,14 +7,50 @@
     <script type="text/javascript" src="../../lib/d3.js"></script>
     <script type="text/javascript" src="js/tablemodel.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/simpletable.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/matrixtable.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/hiddencolumntable.js" charset="gbk"></script>
 </head>
 
 <body>
+<style>
+    /* poptip */
+    .poptip{position: absolute;top: 20px;left:20px;padding: 6px 10px 5px;*padding: 7px 10px 4px;line-height: 16px;color: #DB7C22;font-size: 12px;background-color: #FFFCEF;border: solid 1px #FFBB76;border-radius: 2px;box-shadow: 0 0 3px #ddd;}
+    .poptip-arrow{position: absolute;overflow: hidden;font-style: normal;font-family: simsun;font-size: 12px;text-shadow:0 0 2px #ccc;}
 
-<p>这个例子学习自动创建一个简单的表格</p>
+    .poptip-arrow em,.poptip-arrow i{position: absolute;left:0;top:0;font-style: normal;}
+    .poptip-arrow em{color: #FFBB76;}
+    .poptip-arrow i{color: #FFFCEF;text-shadow:none;}
 
+    .poptip-arrow-top,.poptip-arrow-bottom{height: 6px;width: 12px;left:12px;margin-left:-6px;}
+    .poptip-arrow-left,.poptip-arrow-right{height: 12px;width: 6px;top: 12px;margin-top:-6px;}
+
+    .poptip-arrow-top{top: -6px;}
+    .poptip-arrow-top em{top: -1px;}
+    .poptip-arrow-top i{top: 0px;}
+
+    .poptip-arrow-bottom{bottom: -6px;}
+    .poptip-arrow-bottom em{top: -8px;}
+    .poptip-arrow-bottom i{top: -9px;}
+
+    .poptip-arrow-left{left:-6px;}
+    .poptip-arrow-left em{left:1px;}
+    .poptip-arrow-left i{left:2px;}
+
+    .poptip-arrow-right{right:-6px;}
+    .poptip-arrow-right em{left:-6px;}
+    .poptip-arrow-right i{left:-7px;}
+
+</style>
+<p>一个可以选择隐藏/显示列的表格</p>
+<div class="poptip">
+    <span class="poptip-arrow poptip-arrow-top"><em>◆</em><i>◆</i></span>
+    <span class="poptip-arrow poptip-arrow-right"><em>◆</em><i>◆</i></span>
+    <span class="poptip-arrow poptip-arrow-bottom"><em>◆</em><i>◆</i></span>
+    <span class="poptip-arrow poptip-arrow-left"><em>◆</em><i>◆</i></span>
+    <div class="tableConfigDiv"></div>
+</div>
 <div class="tableDiv"></div>
-<div class="tableDiv2"></div>
+
 <script type="text/javascript">
     var data = [
         {
@@ -83,38 +119,9 @@
         }
     ];
 
-
-    /**显示某一行的值*/
-    var showARowValue = function (rowIndex, oneColumnTitle, oneRowData, td) {
-        if (oneColumnTitle == "Index") {
-            return rowIndex + 1;
-        } else if (rowIndex == 3 && oneColumnTitle == "signinTime") {
-            //创建一个子表
-            var d3Table2 = createTableByD3(createTableModelByD3(td));
-            d3Table2.displayColumnArray = d3Table.copyDisplayColumnArray();
-            d3Table2.appendTableTitle("id", "你是谁");
-            d3Table2.renderTBody(data, showARowValue2).fillTableFooter(fillTableFooterFunc);
-            return null;
-        }
-        else {
-            return oneRowData[oneColumnTitle];
-        }
-    };
-    /**显示某一行的值*/
-    var showARowValue2 = function (rowIndex, oneColumnTitle, oneRowData) {
-        if (oneColumnTitle == "Index") {
-            return rowIndex + 1;
-        } else {
-            return oneRowData[oneColumnTitle];
-        }
-    };
     /**显示页脚的统计值*/
     var fillTableFooterFunc = function (td, columnField, index, columnLength) {
         if (index == 0) {
-            if (columnLength > 5) {
-                td.attr("colspan", 2);
-                columnLength--;
-            }
             td.attr("align", "right");
             return "合计：";
         } else if (columnField == "userName") {
@@ -129,21 +136,27 @@
         else if (columnField == "isOnline") {
             return "3人在线";
         } else {
-            td.remove();
-            return null;
+            return "";
         }
     };
 
 </script>
 <script type="text/javascript">
-    /**显示第column列的标题*/
-
     var d3Table = createTableByD3(createTableModelByD3("body div.tableDiv"));
-    d3Table.table.attr("border", 3);
-    d3Table.appendTableTitle("Index", "序号").appendTableTitle("id", "主鍵").appendTableTitle("userName", "姓名")
-            .appendTableTitle("gender", "性別").appendTableTitle("age", "年龄")
-            .appendTableTitle("isOnline", "在线").appendTableTitle("signinTime", "登录时间");
-    d3Table.renderTBody(data, showARowValue).fillTableFooter(fillTableFooterFunc);
+    var tableConfig = tableConfigPopupByD3("body div.tableConfigDiv");
+    /**生成一个表格*/
+    var generateTable = function () {
+        d3Table.table.attr("border", 3);
+        d3Table.appendTableTitle("Index", "序号").appendTableTitle("id", "主鍵").appendTableTitle("userName", "姓名")
+                .appendTableTitle("gender", "性別").appendTableTitle("age", "年龄")
+                .appendTableTitle("isOnline", "在线").appendTableTitle("signinTime", "登录时间");
+        d3Table.renderTBody(data).fillTableFooter(fillTableFooterFunc);
+        var idxTd = d3Table.getTheadCell(0, 0);
+        idxTd.on("click", function () {
+            tableConfig.refreshConfigTab();
+        });
+    }
+
     var update = function () {
         d3Table.appendTableTitle("userName", "另一個表头");
         data[2].userName = '我心飞翔';
@@ -157,7 +170,7 @@
                 .appendTableTitle("isOnline", "在线", 5).appendTableTitle("signinTime", "登录时间", 6);
         data[2].userName = '小强3';
         d3Table.thead.style("background-color", "");
-        d3Table.renderTBody(data, showARowValue).fillTableFooter(fillTableFooterFunc);
+        d3Table.renderTBody(data).fillTableFooter(fillTableFooterFunc);
     }
     var nonTitle = function () {
         d3Table.showTableHeader = false;
@@ -166,10 +179,10 @@
     var hidenColumn = function () {
         d3Table.showTableHeader = true;
         d3Table.appendTableTitle("Index", "").appendTableTitle("isOnline", "");
-        d3Table.renderTBody(data, showARowValue).fillTableFooter(fillTableFooterFunc);
+        d3Table.renderTBody(data).fillTableFooter(fillTableFooterFunc);
     }
 </script>
-<button onclick="update()">修改一下</button>
+<button onclick="generateTable()">生成表格</button>
 <button onclick="nonTitle()">无表头</button>
 <button onclick="hidenColumn()">隐藏部分列</button>
 <button onclick="refresh()">还原</button>

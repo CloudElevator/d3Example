@@ -5,7 +5,8 @@
     <title>自动创建表格</title>
     <link rel="stylesheet" type="text/css" href="../../css/styles.css"/>
     <script type="text/javascript" src="../../lib/d3.js"></script>
-    <script type="text/javascript" src="js/celltable.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/tablemodel.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/matrixtable.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
 
     var d3Table = null;
     var refresh = function () {
-        d3Table = createMatrixTableByD3("body div.tableDiv", 16, 40);
+        d3Table = createMatrixTableByD3(createTableModelByD3("body div.tableDiv"), 16, 40);
         d3Table.table.attr("border", 3);
 
         var cell34 = d3Table.getCell(2, 4).html("abc你好啊！");

@@ -21,55 +21,81 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="simpletable.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/js/simpletable.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="112" column="5" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="filtering.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/chapter6/filtering.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="52" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="52" />
+            <state vertical-scroll-proportion="-0.7352941">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="celltable.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/celltable.html">
+      <file leaf-file-name="multi-element-transition.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chapter6/multi-element-transition.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.7941175">
-              <caret line="24" column="69" selection-start-line="24" selection-start-column="69" selection-end-line="25" selection-end-column="40" />
+            <state vertical-scroll-proportion="-3.6764705">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="13" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="celltable.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/js/celltable.js">
+      <file leaf-file-name="single-element-transition.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chapter6/single-element-transition.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="106" column="58" selection-start-line="106" selection-start-column="58" selection-end-line="106" selection-end-column="58" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-4.5882354">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="simpletable.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/simpletable.html">
+      <file leaf-file-name="timer.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chapter6/timer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6362434">
-              <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
+            <state vertical-scroll-proportion="-9.735294">
+              <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tweening.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chapter6/tweening.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-31.617647">
+              <caret line="43" column="43" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="arc.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chapter7/arc.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.705882">
+              <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="arc-label.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/chapter7/arc-label.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5952381">
+              <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="d3.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/d3.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5856" column="20" selection-start-line="5856" selection-start-column="16" selection-end-line="5856" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -114,16 +140,23 @@
         <option value="$PROJECT_DIR$/src/chapter6/custom-interpolator-transition.html" />
         <option value="$PROJECT_DIR$/src/chapter6/easing.html" />
         <option value="$PROJECT_DIR$/src/chapter6/events.html" />
-        <option value="$PROJECT_DIR$/src/chapter6/single-element-transition.html" />
         <option value="$PROJECT_DIR$/data/flare.json" />
         <option value="$PROJECT_DIR$/src/chapter6/filtering.html" />
         <option value="$PROJECT_DIR$/src/chapter9/tree.html" />
         <option value="$PROJECT_DIR$/src/test/js/table.js" />
         <option value="$PROJECT_DIR$/src/test/table.html" />
-        <option value="$PROJECT_DIR$/src/test/js/simpletable.js" />
         <option value="$PROJECT_DIR$/src/test/js/celltable.js" />
         <option value="$PROJECT_DIR$/src/test/celltable.html" />
+        <option value="$PROJECT_DIR$/src/test/js/simpletable.js" />
         <option value="$PROJECT_DIR$/src/test/simpletable.html" />
+        <option value="$PROJECT_DIR$/src/test/matrixtable.html" />
+        <option value="$PROJECT_DIR$/src/test/js/matrixtable.js" />
+        <option value="$PROJECT_DIR$/src/test/js/tablemodel.js" />
+        <option value="$PROJECT_DIR$/src/test/js/hiddencolumntable.js" />
+        <option value="$PROJECT_DIR$/src/test/hiddencolumntable.html" />
+        <option value="$PROJECT_DIR$/src/chapter6/multi-element-transition.html" />
+        <option value="$PROJECT_DIR$/src/chapter6/single-element-transition.html" />
+        <option value="$PROJECT_DIR$/src/chapter6/timer.html" />
       </list>
     </option>
   </component>
@@ -162,7 +195,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -519,6 +551,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -576,20 +609,20 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1328" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
-  <component name="RunManager" selected="JavaScript Debug.simpletable.html">
-    <configuration default="false" name="tree.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/chapter9/tree.html">
+  <component name="RunManager" selected="JavaScript Debug.arc-label.html">
+    <configuration default="false" name="multi-element-transition.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/chapter6/multi-element-transition.html">
       <method />
     </configuration>
-    <configuration default="false" name="table.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/test/table.html">
+    <configuration default="false" name="single-element-transition.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/chapter6/single-element-transition.html">
       <method />
     </configuration>
-    <configuration default="false" name="treemap.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/chapter9/treemap.html">
+    <configuration default="false" name="tweening.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/chapter6/tweening.html">
       <method />
     </configuration>
-    <configuration default="false" name="simpletable.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/test/simpletable.html">
+    <configuration default="false" name="arc.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/chapter7/arc.html">
       <method />
     </configuration>
-    <configuration default="false" name="celltable.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/test/celltable.html">
+    <configuration default="false" name="arc-label.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/chapter7/arc-label.html">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -707,19 +740,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.tree.html" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.table.html" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.treemap.html" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.simpletable.html" />
-      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.celltable.html" />
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.multi-element-transition.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.single-element-transition.html" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.tweening.html" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.arc.html" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.arc-label.html" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.simpletable.html" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.celltable.html" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.table.html" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.tree.html" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.treemap.html" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.arc-label.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.arc.html" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.tweening.html" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.single-element-transition.html" />
+        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.multi-element-transition.html" />
       </list>
     </recent_temporary>
   </component>
@@ -749,9 +782,9 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.070866145" sideWeight="0.26725942" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.070866145" sideWeight="0.27039748" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.070866145" sideWeight="0.7327406" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.070866145" sideWeight="0.7296025" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -787,63 +820,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/chapter1/npm-dev-env-grunt/Gruntfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="47" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chapter1/npm-dev-env-grunt/LICENSE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chapter1/npm-dev-env-grunt/make">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chapter1/npm-dev-env-grunt/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chapter1/npm-dev-env-grunt/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/d3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.0">
-          <caret line="467" column="4" selection-start-line="467" selection-start-column="4" selection-end-line="467" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chapter2/multiple-selection.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.423077">
-          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chapter2/selection-iteration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.346153">
-          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/chapter3/data.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.3076923">
@@ -977,20 +953,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/chapter6/single-element-transition.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26035503">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chapter6/multi-element-transition.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23076923">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/chapter6/events.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.02366864">
@@ -1023,7 +985,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="12.201835">
           <caret line="266" column="26" selection-start-line="266" selection-start-column="26" selection-end-line="266" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1098,16 +1059,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/js/simpletable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="112" column="5" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/chapter2/function-chain.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2597865">
@@ -1122,36 +1073,128 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/chapter6/filtering.html">
+    <entry file="file://$PROJECT_DIR$/src/test/matrixtable.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="52" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="52" />
+        <state vertical-scroll-proportion="-5.3235292">
+          <caret line="25" column="61" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/js/celltable.js">
+    <entry file="file://$PROJECT_DIR$/src/test/js/simpletable.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="106" column="58" selection-start-line="106" selection-start-column="58" selection-end-line="106" selection-end-column="58" />
+          <caret line="27" column="31" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="31" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/celltable.html">
+    <entry file="file://$PROJECT_DIR$/src/test/js/matrixtable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.7941175">
-          <caret line="24" column="69" selection-start-line="24" selection-start-column="69" selection-end-line="25" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/hiddencolumntable.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.352942">
+          <caret line="137" column="16" selection-start-line="137" selection-start-column="16" selection-end-line="137" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/js/hiddencolumntable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/simpletable.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6362434">
-          <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
+        <state vertical-scroll-proportion="-6.7058825">
+          <caret line="140" column="77" selection-start-line="140" selection-start-column="17" selection-end-line="140" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/js/tablemodel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37974682">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/d3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5856" column="20" selection-start-line="5856" selection-start-column="16" selection-end-line="5856" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chapter6/filtering.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.7352941">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chapter6/multi-element-transition.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.6764705">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="13" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chapter6/single-element-transition.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.5882354">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chapter6/timer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.735294">
+          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chapter6/tweening.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-31.617647">
+          <caret line="43" column="43" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chapter7/arc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.705882">
+          <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chapter7/arc-label.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5952381">
+          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
           <folding />
         </state>
       </provider>
