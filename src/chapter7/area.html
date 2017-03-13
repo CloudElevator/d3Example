@@ -9,7 +9,7 @@
 
 <body>
 
-<p>这个例子学习画区域图。</p>
+<p>这个例子学习画面积图。</p>
 <script type="text/javascript">
     var width = 500,
         height = 500,
@@ -22,50 +22,56 @@
             .domain([0, 10])
             .range([height - margin, margin]);
         
-    var data = d3.range(11).map(function(i){ // <-B
+    var data = d3.range(11).map(function(i){ // <-B准备数据，y坐标值公式：A*sin(x)+K
             return {x: i, y: Math.sin(i)*3 + 5};
         });
     
     var svg = d3.select("body").append("svg");
     
     svg.attr("height", height)
-        .attr("width", width);        
+        .attr("width", width);
     
     renderAxes(svg);
         
-    render("linear");    
+    render("linear");
     
     renderDots(svg);
     
     function render(){
+        //定义画线描点的函数
         var line = d3.svg.line()
                 .x(function(d){return x(d.x);})
-                .y(function(d){return y(d.y);});
+                .y(function(d){return y(d.y);});//d是从data中取出的一个点
                 
         svg.selectAll("path.line")
                 .data([data])
             .enter()
                 .append("path")
-                .attr("class", "line");                
+                .attr("class", "line");
                 
         svg.selectAll("path.line")
                 .data([data])       
-            .attr("d", function(d){return line(d);});        
-            
-        var area = d3.svg.area() // <-C
+            .attr("d", function(d){return line(d);});//画点
+
+        //area()构造一个新的面积生成器，使用默认的x（横坐标），y0（基线），y1（顶线）访问器函数
+        var area = d3.svg.area() // <-C  定义画区域的函数
             .x(function(d) { return x(d.x); }) // <-D
-            .y0(y(0)) // <-E
-            .y1(function(d) { return y(d.y); }); // <-F
+            .y0(y(0)) // <-E 面积底部的线，如果是多面积图，则上层的基线为下层的顶线。
+            .y1(function(d) { return y(d.y); }); // <-F 顶线自然与line的y一模一样
             
         svg.selectAll("path.area") // <-G
                 .data([data])
             .enter()
                 .append("path")
                 .attr("class", "area")
-                .attr("d", function(d){return area(d);}); // <-H
+                .attr("d", function(d){return area(d);}); // <-H 画面积图
     }
-    
-    function renderDots(svg){        
+    /**数据点附近画空心小圆点
+     * "circle"表示圆元素
+     * cx，cy表示圆心坐标
+     * r表示半径
+    */
+    function renderDots(svg){
          svg.append("g").selectAll("circle")
             .data(data)
           .enter().append("circle")

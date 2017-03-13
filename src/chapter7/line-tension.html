@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+<p>这个例子学习表现线条张力tension。</p>
 <script type="text/javascript">
     var width = 500,
         height = 500,
@@ -45,10 +45,16 @@
             .enter()
                 .append("path")
                 .attr("class", "line");            
-                
+        /**
+         * 如果指定tension 参数，设置基本样条曲线插值器拉伸为指定的范围[0, 1]内的数字。
+         * 如果没有指定tension 放回当前的拉伸。
+         * 拉伸只在基本样条曲线模块有效：样条曲线、开放样条曲线和闭合样条曲线。
+         * 默认拉伸值是0.7。在某种意义上，这可以解释为切线的长度；
+         * 1将产生全为零的切线，0产生Catmull-Rom样条曲线
+         * */
         svg.selectAll("path.line")
-                .data(tension) // <-A                    
-            .transition().duration(duration).ease("linear") // <-B
+                .data(tension) // <-A    传入张力值
+            .transition().duration(duration).ease("linear") // <-B 线性渐变
             .attr("d", function(d){
                 return line.tension(d)(data); // <-C
             });

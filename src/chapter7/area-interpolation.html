@@ -9,6 +9,7 @@
 
 <body>
 
+<p>这个例子学习利用d3自带的插值器画面积图。</p>
 <script type="text/javascript">
     var width = 500,
         height = 500,
@@ -49,10 +50,10 @@
                 
         svg.selectAll("path.line")
                 .data([data])       
-            .attr("d", function(d){return line(d);});        
+            .attr("d", function(d){return line(d);});
             
         var area = d3.svg.area()
-            .interpolate(mode) // <-B
+            .interpolate(mode) // <-B 利用插值器
             .x(function(d) { return x(d.x); })
             .y0(y(0))
             .y1(function(d) { return y(d.y); });
@@ -77,15 +78,16 @@
             .attr("cy", function(d) { return y(d.y); })
             .attr("r", 4.5);
     }
-    
+
+    //生成坐标轴
     function renderAxes(svg){            
         var xAxis = d3.svg.axis()
                 .scale(d3.scale.linear().range([0, quadrantWidth()]))
-                .orient("bottom");            
+                .orient("bottom"); //底端对齐
                 
         var yAxis = d3.svg.axis()
                 .scale(d3.scale.linear().range([quadrantHeight(), 0]))
-                .orient("left");
+                .orient("left");//左对齐
         
         svg.append("g")        
             .attr("class", "axis")
@@ -130,18 +132,28 @@
 <h4>Interpolation Mode:</h4>
 <div class="control-group">
     <button onclick="render('linear')">linear</button>
-    <button onclick="render('linear-closed')">linear-closed</button>
+    <button onclick="render('linear-closed')">linear-closed首尾相连</button>
+    <!-- 垂直和水平片段之间交替，如台阶函数-->
     <button onclick="render('step-before')">step-before</button>
+    <!-- 水平和垂直片段之间交替，如台阶函数-->
     <button onclick="render('step-after')">step-after</button>
+    <!-- 一个B-spline（样条曲线，是一种通过或接近指定点 的拟合曲线），在末尾控制点的重复-->
     <button onclick="render('basis')">basis</button>
+    <!-- 一个开放的B-spline；除掉首尾，剩余的集合首尾不相连-->
     <button onclick="render('basis-open')">basis-open</button>
 </div>
 <div class="control-group">
+    <!--B-spline，除掉首尾，剩余的集合首尾相连 -->
     <button onclick="render('basis-closed')">basis-closed</button>
+    <!-- -->
     <button onclick="render('bundle')">bundle</button>
+    <!-- 一个Cardinal spline（基数样条），曲线经过所有点-->
     <button onclick="render('cardinal')">cardinal</button>
+    <!-- 一个开放的Cardinal spline；除掉首尾两点-->
     <button onclick="render('cardinal-open')">cardinal-open</button>
+    <!--一个Cardinal spline（基数样条），曲线经过所有点，且首尾相连 -->
     <button onclick="render('cardinal-closed')">cardinal-closed</button>
+    <!-- 立方插值(cubic interpolation)保存y值得单调性，平滑度在linear和cardinal之间 -->
     <button onclick="render('monotone')">monotone</button>    
 </div>
 

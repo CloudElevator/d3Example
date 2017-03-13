@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+<p>这个例子学习用插值器画线。</p>
 <script type="text/javascript">
     var width = 500,
         height = 500,
@@ -25,7 +25,7 @@
             {x: 0, y: 5},{x: 1, y: 9},{x: 2, y: 7},
             {x: 3, y: 5},{x: 4, y: 3},{x: 6, y: 4},
             {x: 7, y: 2},{x: 8, y: 3},{x: 9, y: 2}
-        ],  
+        ],
         d3.range(10).map(function(i){
             return {x: i, y: Math.sin(i) + 5};
         })
@@ -59,7 +59,7 @@
             .attr("d", function(d){return line(d);});        
     }
     
-    function renderDots(svg){ // <-B
+    function renderDots(svg){ // <-B 一种新的画小圆圈的写法，因为有两条线，所以用forEach，这样list就只表示1条线了。
         data.forEach(function(list){
              svg.append("g").selectAll("circle")
                 .data(list)
