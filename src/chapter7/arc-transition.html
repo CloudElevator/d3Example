@@ -9,6 +9,7 @@
 
 <body>
 
+<p>这个例子学习画饼图，并在饼图上添加文本。</p>
 <script type="text/javascript">
 var width = 400,
         height = 400,
@@ -47,11 +48,11 @@ function render(innerRadius) {
                 return colors(i);
             })
             .transition().duration(1000)
-            .attrTween("d", function (d) { 
-                var start = {startAngle: 0, endAngle: 0}; // <-A
-                var interpolate = d3.interpolate(start, d); // <-B
+            .attrTween("d", function (d) { //attrTween(name, tween)根据指定的补间（tween）函数，通过指定的名称（name）过渡属性值。过渡的开始和结束值由补间函数决定。
+                var start = {startAngle: 0, endAngle: 0}; // <-A 每一个分量都从0弧度开始
+                var interpolate = d3.interpolate(start, d); // <-B 设定从start到d的插值函数
                 return function (t) {
-                    return arc(interpolate(t)); // <-C
+                    return arc(interpolate(t)); // <-C 利用插值函数计算一个弧线在t时刻的值
                 };
             });
 }

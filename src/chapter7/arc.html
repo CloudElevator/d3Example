@@ -9,10 +9,11 @@
 
 <body>
 
+<p>这个例子学习画饼图。</p>
 <script type="text/javascript">
 var width = 400,
     height = 400,
-    fullAngle = 2 * Math.PI, // <-A
+    fullAngle = 2 * Math.PI, // <-A默认显示整园，即2π的角度。
     colors = d3.scale.category20();
     
 var svg = d3.select("body").append("svg")
@@ -23,7 +24,7 @@ var svg = d3.select("body").append("svg")
 function render(innerRadius, endAngle){
     if(!endAngle) endAngle = fullAngle;
 
-    var data = [ // <-B
+    var data = [ // <-B 将圆分成若干份，每份需要两个参数，1：起始角度，2：结束角度，两者相减就是每份占的角度。
         {startAngle: 0, endAngle: 0.1 * endAngle},
         {startAngle: 0.1 * endAngle, endAngle: 0.2 * endAngle},
         {startAngle: 0.2 * endAngle, endAngle: 0.4 * endAngle},
@@ -32,12 +33,20 @@ function render(innerRadius, endAngle){
         {startAngle: 0.7 * endAngle, endAngle: 0.9 * endAngle},        
         {startAngle: 0.9 * endAngle, endAngle: endAngle}
     ];
-    
-    var arc = d3.svg.arc().outerRadius(200) // <-C
-                    .innerRadius(innerRadius);
+    //arc() 生成一个像饼图或圆环图中的固定弧度。
+    var arc = d3.svg.arc().outerRadius(200) // <- 外圆半径
+                    .innerRadius(innerRadius);//内圆半径
     
     svg.select("g").remove();
-    
+
+    //<path> 元素用于定义一些复杂的图形。
+    // 它可以结合使用直线，曲线等来制作各种不规则的图形。
+    // path 的d属性表示路径集合，即复杂图形中各点的坐标
+    //<d> 属性包含了一些用于绘制的命令。
+    // M 命令代表“Move to”（移动到）的意思。
+    // A 命令代表一个“arc”（弧线）。
+    // L 命令代表“Line”（直线）。
+    // 这些命令都由一支“虚拟的画笔”来执行，这支笔可以移动和绘制图形。
     svg.append("g")
             .attr("transform", "translate(200,200)")
     .selectAll("path.arc")
@@ -45,7 +54,7 @@ function render(innerRadius, endAngle){
         .enter()
             .append("path")
                 .attr("class", "arc")
-                .attr("fill", function(d, i){return colors(i);})
+                .attr("fill", function(d, i){return colors(i);})   //path 的fill属性用于填充渐变颜色
                 .attr("d", function(d, i){
                     return arc(d, i); // <-D
                 });

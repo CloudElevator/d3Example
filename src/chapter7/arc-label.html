@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+<p>这个例子学习画饼图，并在饼图上添加文本。</p>
 <script type="text/javascript">
 var width = 400,
     height = 400,
@@ -20,7 +20,7 @@ var svg = d3.select("body").append("svg")
             .attr("height", height)
             .attr("width", width);    
 
-function render(innerRadius){    
+function render(innerRadius){
     var data = [
         {startAngle: 0, endAngle: 0.1 * fullAngle, value: "A"},
         {startAngle: 0.1 * fullAngle, endAngle: 0.2 * fullAngle, value: "B"},
@@ -45,9 +45,16 @@ function render(innerRadius){
         .attr("class", "arc")
         .attr("fill", function(d, i){return colors(i);})
         .attr("d", function(d, i){return arc(d, i);});
-    
+    //添加文本
+    //text元素的属性有x,y,dx,dy,rotate,textLength,lengthAdjust
+    //x,y表示横纵坐标
+    //dx,dy表示移动的横纵坐标
+    //rotate表示旋转的度数
+    //textLength文本长度
+    //text-anchor 设置文本的排列属性
+    //start|middle|end|inherit
     arcs.append("text")
-        .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+        .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })//arc.centroid(d)算出弧线的中心
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
         .text(function(d) { return d.value; });

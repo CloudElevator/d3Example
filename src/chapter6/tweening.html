@@ -9,9 +9,10 @@
 
 <body>
 
+<p>这个例子学习补间动画，渐变。</p>
 <script type="text/javascript">
     var body = d3.select("body"), duration = 5000;
-    
+    //线性渐变
     body.append("div").append("input")
         .attr("type", "button")
         .attr("class", "countdown")
@@ -20,7 +21,8 @@
         .transition().duration(duration).ease("linear")
             .style("width", "400px")
             .attr("value", "9");
-            
+
+    //通过函数实现线性渐变，将值量化成整数来渐变
     body.append("div").append("input")
         .attr("type", "button")
         .attr("class", "countdown")
@@ -29,7 +31,13 @@
             .styleTween("width", widthTween) // <- A
             .attrTween("value", valueTween); // <- B
             
-            
+    /**量化比例尺是线性比例尺的变体，
+     * 定义域是连续的，值域是离散的。
+     * 定义域基于值域的份数将被划分为同样的份数。
+     * 这种线性关系可以表示为： y = mx + b。
+     * 定义域是用来可视化的数据维度。
+     * 默认的定义域[0,1]，定义一个量化变换；
+     * 因此，默认的量化变换等同于数值的四舍五入round方法；例如：quantize(0.49)返回0，quantize(0.51)返回1。*/
     function widthTween(a){
         var interpolate = d3.scale.quantize()
             .domain([0, 1])
