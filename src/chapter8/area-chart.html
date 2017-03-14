@@ -9,276 +9,308 @@
 
 <body>
 
+<p>这个例子学习画较复杂的面积图。</p>
 <script type="text/javascript">
-function areaChart() {
-    var _chart = {};
+    function areaChart() {
+        var _chart = {};
 
-    var _width = 600, _height = 300,
-            _margins = {top: 30, left: 30, right: 30, bottom: 30},
-            _x, _y,
-            _data = [],
-            _colors = d3.scale.category10(),
-            _svg,
-            _bodyG,
-            _line;
+        var _width = 600, _height = 300,
+                _margins = {top: 30, left: 30, right: 30, bottom: 30},
+                _x, _y,
+                _data = [],
+                _colors = d3.scale.category10(),
+                _svg,
+                _bodyG,
+                _line;
 
-    _chart.render = function () {
-        if (!_svg) {
-            _svg = d3.select("body").append("svg")
-                    .attr("height", _height)
-                    .attr("width", _width);
+        _chart.render = function () {
+            if (!_svg) {
+                _svg = d3.select("body").append("svg")
+                        .attr("height", _height)
+                        .attr("width", _width);
 
-            renderAxes(_svg);
+                renderAxes(_svg);//坐标轴以及网格
 
-            defineBodyClip(_svg);
+                defineBodyClip(_svg);//预定义裁剪路径
+            }
+
+            renderBody(_svg);
+        };
+
+        function renderAxes(svg) {
+            var axesG = svg.append("g")
+                    .attr("class", "axes");
+
+            renderXAxis(axesG);
+
+            renderYAxis(axesG);
         }
 
-        renderBody(_svg);
-    };
+        function renderXAxis(axesG) {
+            var xAxis = d3.svg.axis()
+                    .scale(_x.range([0, quadrantWidth()]))
+                    .orient("bottom");
 
-   function renderAxes(svg) {
-        var axesG = svg.append("g")
-                .attr("class", "axes");
-
-        renderXAxis(axesG);
-
-        renderYAxis(axesG);
-    }
-    
-    function renderXAxis(axesG){
-        var xAxis = d3.svg.axis()
-                .scale(_x.range([0, quadrantWidth()]))
-                .orient("bottom");        
-
-        axesG.append("g")
-                .attr("class", "x axis")
-                .attr("transform", function () {
-                    return "translate(" + xStart() + "," + yStart() + ")";
-                })
-                .call(xAxis);
-                
-        d3.selectAll("g.x g.tick")
-            .append("line")
-                .classed("grid-line", true)
-                .attr("x1", 0)
-                .attr("y1", 0)
-                .attr("x2", 0)
-                .attr("y2", - quadrantHeight());
-    }
-    
-    function renderYAxis(axesG){
-        var yAxis = d3.svg.axis()
-                .scale(_y.range([quadrantHeight(), 0]))
-                .orient("left");
-                
-        axesG.append("g")
-                .attr("class", "y axis")
-                .attr("transform", function () {
-                    return "translate(" + xStart() + "," + yEnd() + ")";
-                })
-                .call(yAxis);
-                
-         d3.selectAll("g.y g.tick")
-            .append("line")
-                .classed("grid-line", true)
-                .attr("x1", 0)
-                .attr("y1", 0)
-                .attr("x2", quadrantWidth())
-                .attr("y2", 0);
-    }
-
-    function defineBodyClip(svg) {
-        var padding = 5;
-
-        svg.append("defs")
-                .append("clipPath")
-                .attr("id", "body-clip")
-                .append("rect")
-                .attr("x", 0 - padding)
-                .attr("y", 0)
-                .attr("width", quadrantWidth() + 2 * padding)
-                .attr("height", quadrantHeight());
-    }
-
-    function renderBody(svg) {
-        if (!_bodyG)
-            _bodyG = svg.append("g")
-                    .attr("class", "body")
-                    .attr("transform", "translate(" 
-                        + xStart() + "," 
-                        + yEnd() + ")") 
-                    .attr("clip-path", "url(#body-clip)");        
-
-        renderLines();
-
-        renderAreas();
-
-        renderDots();
-    }
-
-    function renderLines() {
-        _line = d3.svg.line()
-                        .x(function (d) { return _x(d.x); })
-                        .y(function (d) { return _y(d.y); });
-                        
-        _bodyG.selectAll("path.line")
-                .data(_data)
-                .enter()
-                .append("path")
-                .style("stroke", function (d, i) { 
-                    return _colors(i); 
-                })
-                .attr("class", "line");
-
-        _bodyG.selectAll("path.line")
-                .data(_data)
-                .transition()
-                .attr("d", function (d) { return _line(d); });
-    }
-
-    function renderDots() {
-        _data.forEach(function (list, i) {
-            _bodyG.selectAll("circle._" + i)
-                    .data(list)
-                    .enter().append("circle")
-                    .attr("class", "dot _" + i);
-
-            _bodyG.selectAll("circle._" + i)
-                    .data(list)
-                    .style("stroke", function (d) { 
-                        return _colors(i); 
+            axesG.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", function () {
+                        return "translate(" + xStart() + "," + yStart() + ")";
                     })
+                    .call(xAxis);
+
+            d3.selectAll("g.x g.tick")
+                    .append("line")
+                    .classed("grid-line", true)
+                    .attr("x1", 0)
+                    .attr("y1", 0)
+                    .attr("x2", 0)
+                    .attr("y2", -quadrantHeight());
+        }
+
+        function renderYAxis(axesG) {
+            var yAxis = d3.svg.axis()
+                    .scale(_y.range([quadrantHeight(), 0]))
+                    .orient("left");
+
+            axesG.append("g")
+                    .attr("class", "y axis")
+                    .attr("transform", function () {
+                        return "translate(" + xStart() + "," + yEnd() + ")";
+                    })
+                    .call(yAxis);
+
+            d3.selectAll("g.y g.tick")
+                    .append("line")
+                    .classed("grid-line", true)
+                    .attr("x1", 0)
+                    .attr("y1", 0)
+                    .attr("x2", quadrantWidth())
+                    .attr("y2", 0);
+        }
+
+        function defineBodyClip(svg) {
+            var padding = 5;
+            /**
+             * <defs>元素用于预定义一个元素使其能够在SVG图像中重复使用
+             * 这里只是裁剪掉横坐标轴以下的部分，这里不用画面积
+             **/
+            svg.append("defs")
+                    .append("clipPath")
+                    .attr("id", "body-clip")
+                    .append("rect")
+                    .attr("x", 0 - padding)
+                    .attr("y", 0)
+                    .attr("width", quadrantWidth() + 2 * padding)
+                    .attr("height", quadrantHeight());
+        }
+
+        /**
+         * clip-path属性专门用于裁剪路径，它还可以用于g元素的style属性使用
+         * url(#body-clip)将路径指向body-clip元素
+         * */
+        function renderBody(svg) {
+            if (!_bodyG)
+                _bodyG = svg.append("g")
+                        .attr("class", "body")
+                        .attr("transform", "translate("
+                        + xStart() + ","
+                        + yEnd() + ")")
+                        .attr("clip-path", "url(#body-clip)");
+
+            renderLines();//画线
+
+            renderAreas();//画面积
+
+            renderDots();//画空心小圆圈
+        }
+
+        function renderLines() {
+            _line = d3.svg.line()
+                    .x(function (d) {
+                        return _x(d.x);
+                    })
+                    .y(function (d) {
+                        return _y(d.y);
+                    });
+
+            _bodyG.selectAll("path.line")
+                    .data(_data)
+                    .enter()
+                    .append("path")
+                    .style("stroke", function (d, i) {
+                        return _colors(i);
+                    })
+                    .attr("class", "line");
+
+            _bodyG.selectAll("path.line")
+                    .data(_data)
                     .transition()
-                    .attr("cx", function (d) { return _x(d.x); })
-                    .attr("cy", function (d) { return _y(d.y); })
-                    .attr("r", 4.5);
-        });
-    }
+                    .attr("d", function (d) {
+                        return _line(d);
+                    });
+        }
 
-    function renderAreas() {
-        var area = d3.svg.area() // <-A
-                    .x(function(d) { return _x(d.x); })
+        function renderDots() {
+            _data.forEach(function (list, i) {
+                _bodyG.selectAll("circle._" + i)
+                        .data(list)
+                        .enter().append("circle")
+                        .attr("class", "dot _" + i);
+
+                _bodyG.selectAll("circle._" + i)
+                        .data(list)
+                        .style("stroke", function (d) {
+                            return _colors(i);
+                        })
+                        .transition()
+                        .attr("cx", function (d) {
+                            return _x(d.x);
+                        })
+                        .attr("cy", function (d) {
+                            return _y(d.y);
+                        })
+                        .attr("r", 4.5);
+            });
+        }
+
+        function renderAreas() {
+            var area = d3.svg.area() // <-A
+                    .x(function (d) {
+                        return _x(d.x);
+                    })
                     .y0(yStart())
-                    .y1(function(d) { return _y(d.y); });
+                    .y1(function (d) {
+                        return _y(d.y);
+                    });
 
-        _bodyG.selectAll("path.area")
-                .data(_data)
-                .enter() // <-B
-                .append("path")
-                .style("fill", function (d, i) { 
-                    return _colors(i); 
-                })
-                .attr("class", "area");
+            _bodyG.selectAll("path.area")
+                    .data(_data)
+                    .enter() // <-B
+                    .append("path")
+                    .style("fill", function (d, i) {
+                        return _colors(i);
+                    })
+                    .attr("class", "area");
 
-        _bodyG.selectAll("path.area")
-                .data(_data)
-                .transition() // <-D
-                .attr("d", function (d) { 
-                    return area(d); // <-E
-                });
-    }
+            _bodyG.selectAll("path.area")
+                    .data(_data)
+                    .transition() // <-D
+                    .attr("d", function (d) {
+                        return area(d); // <-E
+                    });
+        }
 
-    function xStart() {
-        return _margins.left;
-    }
+        function xStart() {
+            return _margins.left;
+        }
 
-    function yStart() {
-        return _height - _margins.bottom;
-    }
+        function yStart() {
+            return _height - _margins.bottom;
+        }
 
-    function xEnd() {
-        return _width - _margins.right;
-    }
+        function xEnd() {
+            return _width - _margins.right;
+        }
 
-    function yEnd() {
-        return _margins.top;
-    }
+        function yEnd() {
+            return _margins.top;
+        }
 
-    function quadrantWidth() {
-        return _width - _margins.left - _margins.right;
-    }
+        function quadrantWidth() {
+            return _width - _margins.left - _margins.right;
+        }
 
-    function quadrantHeight() {
-        return _height - _margins.top - _margins.bottom;
-    }
+        function quadrantHeight() {
+            return _height - _margins.top - _margins.bottom;
+        }
 
-    _chart.width = function (w) {
-        if (!arguments.length) return _width;
-        _width = w;
+        _chart.width = function (w) {
+            if (!arguments.length) return _width;
+            _width = w;
+            return _chart;
+        };
+
+        _chart.height = function (h) {
+            if (!arguments.length) return _height;
+            _height = h;
+            return _chart;
+        };
+
+        _chart.margins = function (m) {
+            if (!arguments.length) return _margins;
+            _margins = m;
+            return _chart;
+        };
+
+        _chart.colors = function (c) {
+            if (!arguments.length) return _colors;
+            _colors = c;
+            return _chart;
+        };
+
+        /**设置x定义域
+         * arguments是js的保留字，表示传入的参数
+         * */
+        _chart.x = function (x) {
+            if (!arguments.length) return _x;//如果参数为空 返回内部对象_x
+            _x = x;//否则_x为传入的x比例尺，参见areaChart()的调用过程。
+            return _chart;
+        };
+
+        _chart.y = function (y) {
+            if (!arguments.length) return _y;
+            _y = y;
+            return _chart;
+        };
+
+        _chart.addSeries = function (series) {
+            _data.push(series);
+            return _chart;
+        };
+
         return _chart;
-    };
-
-    _chart.height = function (h) {
-        if (!arguments.length) return _height;
-        _height = h;
-        return _chart;
-    };
-
-    _chart.margins = function (m) {
-        if (!arguments.length) return _margins;
-        _margins = m;
-        return _chart;
-    };
-
-    _chart.colors = function (c) {
-        if (!arguments.length) return _colors;
-        _colors = c;
-        return _chart;
-    };
-
-    _chart.x = function (x) {
-        if (!arguments.length) return _x;
-        _x = x;
-        return _chart;
-    };
-
-    _chart.y = function (y) {
-        if (!arguments.length) return _y;
-        _y = y;
-        return _chart;
-    };
-
-    _chart.addSeries = function (series) {
-        _data.push(series);
-        return _chart;
-    };
-
-    return _chart;
-}
-
-function randomData() {
-    return Math.random() * 9;
-}
-
-function update() {
-    for (var i = 0; i < data.length; ++i) {
-        var series = data[i];
-        series.length = 0;
-        for (var j = 0; j < numberOfDataPoint; ++j)
-            series.push({x: j, y: randomData()});
     }
+</script>
+
+<script>
+    /**面积图形对象
+     * 设置x和y的定义域
+     * */
+    var chart = areaChart()
+            .x(d3.scale.linear().domain([0, 10]))
+            .y(d3.scale.linear().domain([0, 10]));
+
+    var numberOfSeries = 2;//两组数据
+    var numberOfDataPoint = 11;//每组有11个点
+    var data = [];
+
+    /**设置随机数，便于创建新的面积图*/
+    function randomData() {
+        return Math.random() * 9;
+    }
+    /**更新面积图，该功能展示了数据改变而坐标图可以不变的效果*/
+    function update() {
+        for (var i = 0; i < data.length; ++i) {
+            var series = data[i];
+            series.length = 0;
+            for (var j = 0; j < numberOfDataPoint; ++j)
+                series.push({x: j, y: randomData()});
+        }
+
+        chart.render();
+    }
+
+    for (var i = 0; i < numberOfSeries; ++i)
+        data.push(d3.range(numberOfDataPoint).map(function (i) {
+            return {x: i, y: randomData()};
+        }));
+
+    //因为有两组数据，所以需要调用chart.addSeries(series)分别设置
+    data.forEach(function (series) {
+        chart.addSeries(series);
+    });
 
     chart.render();
-}
-
-var numberOfSeries = 2,
-    numberOfDataPoint = 11,
-    data = [];
-
-for (var i = 0; i < numberOfSeries; ++i)
-    data.push(d3.range(numberOfDataPoint).map(function (i) {
-        return {x: i, y: randomData()};
-    }));
-
-var chart = areaChart()
-        .x(d3.scale.linear().domain([0, 10]))
-        .y(d3.scale.linear().domain([0, 10]));
-
-data.forEach(function (series) {
-    chart.addSeries(series);
-});
-
-chart.render();
 </script>
 
 <div class="control-group">
