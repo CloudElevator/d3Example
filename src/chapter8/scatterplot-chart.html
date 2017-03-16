@@ -17,10 +17,10 @@ function scatterPlotChart() {
             _margins = {top: 30, left: 30, right: 30, bottom: 30},
             _x, _y,
             _data = [],
-            _colors = d3.scale.category10(),
+            _colors = d3.scale.category20(),
             _svg,
             _bodyG,
-            _symbolTypes = d3.scale.ordinal() // <-A
+            _symbolTypes = d3.scale.ordinal() // <-A 各种图标圆、十字、菱形、正方形、下三角、上三角
                     .range(["circle",
                         "cross",
                         "diamond",
@@ -132,9 +132,9 @@ function scatterPlotChart() {
                     .transition() // <-C
                         .attr("transform", function(d){
                             return "translate(" // <-D
-                                    + _x(d.x) 
-                                    + "," 
-                                    + _y(d.y) 
+                                    + _x(d.x)
+                                    + ","
+                                    + _y(d.y)
                                     + ")";
                         })
                         .attr("d", 
@@ -213,32 +213,32 @@ function scatterPlotChart() {
 }
 
 function randomData() {
-    return Math.random() * 9;
+    return Math.random() *1357%14;
 }
 
 function update() {
-    for (var i = 0; i < data.length; ++i) {
+    for (var i = 0; i < data.length; i++) {
         var series = data[i];
         series.length = 0;
-        for (var j = 0; j < numberOfDataPoint; ++j)
+        for (var j = 0; j < numberOfDataPoint; j++)
             series.push({x: randomData(), y: randomData()});
     }
 
     chart.render();
 }
-
-var numberOfSeries = 5,
-    numberOfDataPoint = 11,
+//每一组数据使用一种图标，所以要想看到所有图标，至少要6组数据
+var numberOfSeries = 6,
+    numberOfDataPoint = 14,
     data = [];
 
 for (var i = 0; i < numberOfSeries; ++i)
-    data.push(d3.range(numberOfDataPoint).map(function (i) {
+    data.push(d3.range(numberOfDataPoint).map(function (idx) {
         return {x: randomData(), y: randomData()};
     }));
 
 var chart = scatterPlotChart()
-        .x(d3.scale.linear().domain([0, 10]))
-        .y(d3.scale.linear().domain([0, 10]));
+        .x(d3.scale.linear().domain([0, 15]))
+        .y(d3.scale.linear().domain([0, 15]));
 
 data.forEach(function (series) {
     chart.addSeries(series);

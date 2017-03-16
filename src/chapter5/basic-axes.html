@@ -43,7 +43,7 @@
         var axis = d3.svg.axis() // <-D
             .scale(scale) // <-E
             .orient(orient) // <-F //orient设置或者取得轴的方向。bottom 表示字在图的下方
-            .ticks(5); // <-G  //控制轴的刻度如何生成。
+            .ticks(5); // <-G  //控制轴的刻度如何生成。首尾刻度之间插入多少个刻度
         
         svg.append("g")                    //g元素是用于把相关元素进行组合的容器元素。
             .attr("transform", function(){ // <-H  transform属性用来对一个元素声明一个或多个变换。
