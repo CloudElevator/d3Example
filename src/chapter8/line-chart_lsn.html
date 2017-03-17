@@ -192,6 +192,15 @@
         };
         return _chart; // <-1E
     }
+</script>
+<script>
+    var start = new Date(2016, 0, 1,6,30), // <-A
+            end = new Date(2017, 0, 2,19,40);
+
+    function randomDate() {
+        return Math.random() * 3;
+    }
+    var spacing=1000*60*60*24;
     function randomData() {
         return Math.random() * 19;
     }
@@ -199,20 +208,28 @@
         for (var i = 0; i < data.length; ++i) {
             var series = data[i];
             series.length = 0;
-            for (var j = 0; j < numberOfDataPoint; ++j)
-                series.push({x: j, y: randomData()});
+            var last=start.getTime();
+            for (var j = 0; j < numberOfDataPoint; ++j){
+                series.push({x: last, y: randomData()});
+                last = last+j*spacing*randomDate();
+            }
         }
         chart.render();
     }
     var numberOfSeries = 2,
             numberOfDataPoint = 21,
             data = [];
-    for (var i = 0; i < numberOfSeries; ++i)
+
+    for (var i = 0; i < numberOfSeries; ++i){
+        var _last=start.getTime();
         data.push(d3.range(numberOfDataPoint).map(function (i) {
-            return {x: i, y: randomData()};
+            var cur=_last;
+            _last = _last+i*spacing*randomDate();
+            return {x: new Date(cur), y: randomData()};
         }));
-    var start = new Date(2016, 0, 1), // <-A
-            end = new Date(2016, 0, 2);
+
+    }
+
     var chart = lineChart()
             .x(d3.time.scale().domain([start, end]))
             .y(d3.scale.linear().domain([0, 20]));
@@ -220,6 +237,10 @@
         chart.addSeries(series);
     });
     chart.render();
+
+    setInterval(function () { // <- 加一个定时器自动变化
+        update();
+    }, 300);
 </script>
 
 <div class="control-group">
