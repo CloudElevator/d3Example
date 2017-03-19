@@ -115,7 +115,7 @@ function expandedAreaChart() {
         //partition递归地将节点树分区为旭日图或者冰柱图、pie饼、stack堆叠
         //tree树、treemap空间递归分区算法展示树、
         var stack = d3.layout.stack()
-                .offset('expand');//指定整体的基线算法
+                .offset('expand');//指定整体的基线算法。可选项有：expand, wiggle, zero, silhouette
         stack(_data);
 
         renderLines(_data);
