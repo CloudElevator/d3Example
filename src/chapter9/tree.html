@@ -26,6 +26,7 @@
 </head>
 
 <body>
+<p>树</p>
 <script type="text/javascript">
     /**根据字符串的长度、字号大小，自动将其分割成若干段，实现自动换行*/
     function splitByLine(str, max, fontsize) {
@@ -59,7 +60,7 @@
      * */
     function tree(maxDepth, leafElementCount) {
         var jiangejuli = 180;
-        var maxLabelLength=Math.round((jiangejuli-100)/3.5);
+        var maxLabelLength = Math.round((jiangejuli - 100) / 3.5);
         var _chart = {};
 
         var _width = (maxDepth + 1) * jiangejuli, _height = leafElementCount * 18,
@@ -269,7 +270,8 @@
 
         return _chart;
     }
-
+</script>
+<script>
     function largeFlare() {
         d3.json("../../data/flare.json", function (nodes) {
             tree(5, 200).nodes(nodes).render();

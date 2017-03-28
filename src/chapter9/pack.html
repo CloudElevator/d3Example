@@ -73,12 +73,12 @@
             }
 
             var pack = d3.layout.pack()
-                    .size([_r, _r])
+                    .size([_r, _r]) //size指定布局尺寸
                     .value(function (d) {
                         return d.size;
                     });
 
-            var nodes = pack.nodes(_nodes);
+            var nodes = pack.nodes(_nodes);//将数据转换成包图能识别的数据
             console.log(nodes);
 
             renderCircles(nodes);
@@ -121,7 +121,7 @@
                     .attr("x", function (d) {return d.x;})
                     .attr("y", function (d) {return d.y;})
                     .text(function (d) {return d.name;})
-                    .style("opacity", function (d) {
+                    .style("opacity", function (d) {  //opacity不透明度
                         return d.r > 20 ? 1 : 0;
                     });
 

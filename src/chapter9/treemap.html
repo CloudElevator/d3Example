@@ -9,6 +9,32 @@
 
 <body>
 
+<p>树</p>
+<script type="text/javascript">
+    /**根据字符串的长度、字号大小，自动将其分割成若干段，实现自动换行*/
+    function splitByLine(str, max, fontsize) {
+        var curLen = 0;
+        var result = [];
+        var start = 0, end = 0;
+        for (var i = 0; i < str.length; i++) {
+            var code = str.charCodeAt(i);
+            var pixelLen = code > 255 ? fontsize : fontsize / 2;
+            curLen += pixelLen;
+            if (curLen > max) {
+                end = i;
+                result.push(str.substring(start, end));
+                start = i;
+                curLen = pixelLen;
+            }
+            if (i === str.length - 1) {
+                end = i;
+                result.push(str.substring(start, end + 1));
+            }
+        }
+        return result;
+    }
+
+</script>
 <script type="text/javascript">
     function treemapChart() {
         var _chart = {};
@@ -41,12 +67,12 @@
                         .attr("class", "body");
 
                 _treemap = d3.layout.treemap() //<-A
-                        .round(false)
+                        .round(false)   //round 启用或者禁用四舍五入像素值
                         .size([_width, _height])
-                        .sticky(true);
+                        .sticky(true); //sticky让布局与数据保持粘滞，变化的时候比较平滑
             }
 
-            _treemap.value(_valueAccessor); //<-B
+            _treemap.value(_valueAccessor); //<-B value设置用来指定矩形树中矩形单元尺寸的值访问器
 
             var nodes = _treemap.nodes(_nodes) //<-C
                     .filter(function (d) {
@@ -77,7 +103,12 @@
                         return d.dy - 1;
                     })
                     .style("fill", function (d) {
-                        return _colors(d.parent.name); //<-G
+                        return _colors(d.parent.name); //<-G  根据名字的hash值，计算颜色
+                    });
+            //添加标题
+            cells.append("svg:title")
+                    .text(function (d) {
+                        return d.name;
                     });
 
             cells.select("text") //<-H
@@ -94,7 +125,7 @@
                     })
                     .style("opacity", function (d) {
                         d.w = this.getComputedTextLength();
-                        return d.dx > d.w ? 1 : 0; //<-I
+                        return d.dx > d.w ? 1 : 0; //<-I  如果字比矩形宽度长，就隐藏标题
                     });
 
             cells.exit().remove();

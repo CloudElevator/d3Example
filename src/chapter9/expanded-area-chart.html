@@ -116,11 +116,11 @@
             //tree树、treemap空间递归分区算法展示树、
             var stack = d3.layout.stack()
                     .offset('expand');//指定整体的基线算法。可选项有：expand, wiggle, zero, silhouette
-            stack(_data);
+            var _formatData=stack(_data);//将数据转换成堆图能识别的数据
 
-            renderLines(_data);
+            renderLines(_formatData);
 
-            renderAreas(_data);
+            renderAreas(_formatData);
         }
 
         function renderLines(stackedData) {

@@ -9,6 +9,7 @@
 
 <body>
 
+<p>堆叠面积图</p>
 <script type="text/javascript">
 function stackedAreaChart() {
     var _chart = {};
@@ -30,7 +31,7 @@ function stackedAreaChart() {
 
             renderAxes(_svg);
 
-            defineBodyClip(_svg);
+            //defineBodyClip(_svg);
         }
 
         renderBody(_svg);
@@ -106,12 +107,12 @@ function stackedAreaChart() {
                     .attr("class", "body")
                     .attr("transform", "translate("
                             + xStart() + ","
-                            + yEnd() + ")")
-                    .attr("clip-path", "url(#body-clip)");
+                            + yEnd() + ")");
+                   // .attr("clip-path", "url(#body-clip)");//不需要裁剪
 
         var stack = d3.layout.stack() //<-A
-                .offset('zero');
-        stack(_data); //<-B
+                .offset('wiggle');  //offset指定整体的基线算法，zero表示无偏移，也是默认的算法。
+        stack(_data); //<-B 把数据转换成堆叠图识别的数据结构
 
         renderLines(_data);
 
@@ -124,7 +125,7 @@ function stackedAreaChart() {
                     return _x(d.x); //<-C
                 })
                 .y(function (d) {
-                    return _y(d.y + d.y0); //<-D
+                    return _y(d.y + d.y0); //<-D  转换后多了y0
                 });
 
         _bodyG.selectAll("path.line")
@@ -149,9 +150,9 @@ function stackedAreaChart() {
                 .x(function (d) {
                     return _x(d.x); //<-E
                 })
-                .y0(function(d){return _y(d.y0);}) //<-F
+                .y0(function(d){return _y(d.y0);}) //<-F 上一条直线的纵坐标
                 .y1(function (d) {
-                    return _y(d.y + d.y0); //<-G
+                    return _y(d.y + d.y0); //<-G 在上一条直线之上增加d.y
                 });
 
         _bodyG.selectAll("path.area")

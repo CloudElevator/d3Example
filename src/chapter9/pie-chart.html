@@ -9,7 +9,7 @@
 
 <body>
 
-<p>饼图，</p>
+<p>饼图</p>
 <script type="text/javascript">
     function pieChart() {
         var _chart = {};
@@ -43,10 +43,10 @@
 
         function renderPie() {
             var pie = d3.layout.pie() // <-A
-                    .sort(function (d) {
+                    .sort(function (d) {  //sort控制饼片段的顺时针方向的顺序
                         return d.id;
                     })
-                    .value(function (d) {
+                    .value(function (d) {//value取得或设置值访问器函数
                         return d.value;
                     });
 
@@ -69,7 +69,7 @@
 
         function renderSlices(pie, arc) {
             var slices = _pieG.selectAll("path.arc")
-                    .data(pie(_data)); // <-B
+                    .data(pie(_data)); // <-B  将数据转换成饼图能识别的数据
 
             slices.enter()
                     .append("path")
@@ -79,27 +79,29 @@
                     });
 
             slices.transition()
-                    .attrTween("d", function (d) {
-                        var currentArc = this.__current__; // <-C
+                    .attrTween("d", function (d) {//attrTween在两个属性值之间平滑地过渡，参数d是path元素中的一个自定义属性名，属性值就是过渡的插值数据。
+//                        var currentArc = this.__current__; // <-C 这句话似乎没起作用
 
-                        if (!currentArc)
-                            currentArc = {startAngle: 0, 
-                                            endAngle: 0};
+//                        if (!currentArc)
+//                            currentArc = {startAngle: 0,
+//                                            endAngle: 0};
 
+                        //var interpolate = d3.interpolate(currentArc, d);//创建一个在两个参数之间的插值器。
                         var interpolate = d3.interpolate(
-                                            currentArc, d);
-                                            
-                        this.__current__ = interpolate(1);//<-D
-                        
+                                {startAngle: 0,endAngle: 0}, d);
+                        //this.__current__ = interpolate(1);<-D 这句话似乎没起作用
+
+                        // 对在区间[0,1]中一个给定的参数t，返回相关的插入值。所以如果参数为1，就表示最后一个值
+                        // 插值器通常用结合比例尺一起使用，映射一个输入域(如定量维度)到一个输出范围(如一系列颜色或像素位置)。
                         return function (t) {
-                            return arc(interpolate(t));
+                            return arc(interpolate(t));//arc在outerRadius，innerRadius之间画一段弧，
                         };
                     });
         }
 
         function renderLabels(pie, arc) {
             var labels = _pieG.selectAll("text.label")
-                    .data(pie(_data)); // <-E
+                    .data(pie(_data)); // <-E 将数据转换成饼图能识别的数据
 
             labels.enter()
                     .append("text")
@@ -108,7 +110,7 @@
             labels.transition()
                     .attr("transform", function (d) {
                         return "translate(" 
-                            + arc.centroid(d) + ")"; // <-F
+                            + arc.centroid(d) + ")"; // <-F  centroid计算弧中心
                     })
                     .attr("dy", ".35em")
                     .attr("text-anchor", "middle")
@@ -167,7 +169,7 @@
         chart.render();
     }
 
-    var numberOfDataPoint = 6,
+    var numberOfDataPoint = 15,
             data = [];
 
     data = d3.range(numberOfDataPoint).map(function (i) {
@@ -176,7 +178,7 @@
 
     var chart = pieChart()
             .radius(200)
-            .innerRadius(100)
+            .innerRadius(50)
             .data(data);
 
     chart.render();

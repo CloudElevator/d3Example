@@ -9,6 +9,7 @@
 
 <body>
 
+<p>流图</p>
 <style>
 path.area{
     fill-opacity: 1;
@@ -101,7 +102,7 @@ function streamgraph() {
                     .attr("clip-path", "url(#body-clip)");
 
         var stack = d3.layout.stack()
-                .offset('wiggle');
+                .offset('wiggle');//将基线算法改为wiggle，就是流图
         var stackedData = stack(_data);
 
         renderAreas(stackedData);
