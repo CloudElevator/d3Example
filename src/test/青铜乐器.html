@@ -5,6 +5,7 @@
     <title>青铜乐器分类树</title>
     <link rel="stylesheet" type="text/css" href="../../css/styles.css"/>
     <script type="text/javascript" src="../../lib/d3.js"></script>
+    <script type="text/javascript" src="js/lsntree.js"></script>
     <style type="text/css">
         .node circle {
             cursor: pointer;
@@ -140,7 +141,7 @@
             //为所有的节点添加title属性（by 刘胜楠）
             nodeEnter.append("svg:title")
                     .text(function (d) {
-                        return d.detail;
+                        return d.customAttrs.detail;
                     });
 
             nodeEnter.append("svg:circle")
@@ -188,7 +189,7 @@
                         return d.children || d._children ? "end" : "start";
                     })
                     .text(function (d) {
-                        var showName = d.name;
+                        var showName = d.customAttrs.name;
                         if (showName.length > maxLabelLength) {
                             showName = showName.substr(0, maxLabelLength) + "...";//截掉太长的名称
                         }
@@ -272,9 +273,125 @@
     }
 </script>
 <script>
-        d3.json("data/qingtongyueqi.json", function (nodes) {
-            tree(5, 20).nodes(nodes).render();
-        });
+    /**树节点的操作*/
+    var treeFun = function () {
+        var _tree = {};
+        _tree.size = 0;//树的节点数
+        _tree.leafSize = 0;//叶子节点数
+        _tree.maxDepth = 0;//深度
+        _tree.curDepth = 1;//当前深度，因为是根节点，所以只能是1
+        _tree.findNodeById = function (id) {
+            return _tree.findSubNodeById(_tree, id);
+        }
+        _tree.findSubNodeById = function (parentNode, id) {
+            if (parentNode.id != undefined && parentNode.id == id) {
+                return parentNode;
+            } else if (parentNode.children != undefined && parentNode.children.length > 0) {
+                for (var i = 0; i < parentNode.children.length; i++) {
+                    var _oneNode = parentNode.children[i];
+                    var _targetOne = _tree.findSubNodeById(_oneNode, id);
+                    if (_targetOne != null && _targetOne != undefined) {
+                        return _targetOne;
+                    }
+                }
+            }
+            return null;
+        }
+        _tree.appendNode = function (parentNodeId, id, name, detail) {
+            var _parentNode;
+            if (parentNodeId == null || parentNodeId == '') {
+                _tree.id = id;
+                _tree.name = name;
+                _tree.detail = detail;
+                if (_tree.size < 1) {
+                    _tree.size = 1;
+                    _tree.leafSize = 1;
+                    _tree.maxDepth = 1;
+                }
+                return _tree;
+            } else {
+                _parentNode = _tree.findNodeById(parentNodeId);
+                if (_parentNode != null && _parentNode != undefined) {
+                    var _currentNode = _tree.findNodeById(id);
+                    if (_currentNode == null || _currentNode == undefined) {
+                        _currentNode = {};
+                        if (_parentNode.children == undefined) {
+                            _parentNode.children = [];
+                        } else {
+                            _tree.leafSize++;//叶子数量自增
+                        }
+                        _currentNode.curDepth = _parentNode.curDepth + 1;//计算当前节点的深度
+                        _parentNode.children.push(_currentNode);
+                        _tree.size++;//总节点数自增
+                        if (_tree.maxDepth < _currentNode.curDepth) {
+                            _tree.maxDepth = _currentNode.curDepth;
+                        }
+                    }
+                    _currentNode.id = id;
+                    _currentNode.name = name;
+                    _currentNode.detail = detail;
+                }
+            }
+            return _tree;
+        }
+        return _tree;
+    }
+
+    var genernateANode = function (parentId,id,  name, detail) {
+        var _node = {};
+        _node.id = id;
+        _node.parentId = parentId;
+        _node.name = name;
+        _node.detail = detail;
+        return _node;
+    };
+    var sort=function(_node1,_node2){
+        var p1=Number(_node1.customAttrs.id);
+        var p2=Number(_node2.customAttrs.id);
+        return p1-p2;
+    }
+</script>
+<script>
+    var treeBuilder = lsnTree();
+    treeBuilder.appendNode(genernateANode('', '1', '青铜器', '中国古代青铜器'), 'id', 'parentId', 'id');
+    treeBuilder.
+            appendNode(genernateANode('1', '1.1', '青铜酒器', '中国古代青铜酒器')).
+            appendNode(genernateANode('1', '1.2', '青铜乐器', '中国古代青铜乐器')).
+            appendNode(genernateANode('1.2', '1.2.1', '铃', '体形较小，一般在5厘米直径，器壁较薄，铃体上窄下宽，横断面为合瓦形铃体，' +
+            '一侧有扉棱，舞面为平面,上设有桥形钮')).
+            appendNode(genernateANode('1.2.1', '1.2.1.1', '有舌', '内有铃舌，摇动使铃舌顶部打击铃壁内侧发出声音')).
+            appendNode(genernateANode('1.2.1', '1.2.1.2', '无舌', '内无铃舌，也可作为装饰品')).
+            appendNode(genernateANode('1.2', '1.2.2', '铙', '也称为钲，“商铙”的基本形制似铃，但有圆柱形空甬与体腔相通，使用时铙口朝上，将空甬植于木架之上，' +
+            '这时的铜铙已是早期青铜钟类乐器发展成熟时期的产物，其不仅确立了合瓦形的结构，出现了系列性的成组编铙，同时也奠定了青铜乐钟“一钟二音”的基础，' +
+            '成为专用于音乐，有固定音高，能够演奏六声甚至完整七声')).
+            appendNode(genernateANode('1.2.2', '1.2.2.1', '铙与钟的区别', '甬下为铙，甬上为钟；甬中空为铙，实心为钟；无枚为铙，有枚为钟')).
+            appendNode(genernateANode('1.2.2', '1.2.2.2', '铙与钲的区别', '小为铙，大为钲；宫殿使用为铙，战争使用为钲；甬无突起环或者孔为铙，有突起环或者孔为钲')).
+            appendNode(genernateANode('1.2', '1.2.3', '钟', '钟又分好几种')).
+            appendNode(genernateANode('1.2.3', '1.2.3.1', '甬钟', '与铙相比，甬制的变化。这些甬钟的甬部均为上细下粗的带有锥度的圆柱形，' +
+            '并且旋、斡具备，因而使其具有牢固的悬挂演奏的结构。另一个特征是这些钟体钲部设置了“枚”，这些枚通常对称排列，' +
+            '每面六组，每组3枚，正反两面共36枚。由于枚的作用，使甬钟的音响、音色比无枚的商铙有了较大的改进。' +
+            '第三个特征是甬钟在音乐、音响性能的“一种二音”的突出表现。洛阳出土的甬钟大多为形制相同、大小相次、8件一组的编甬钟，比之商编铙，' +
+            '早期编甬钟三件一套的组合已扩大了许多，并且非常明确地具备了第二基音。其中一个音在鼓的中心，另一个音在鼓侧。')).
+            appendNode(genernateANode('1.2.3', '1.2.3.2', '鎛钟', '鎛钟特征是合瓦形，鎛口平齐，扁钮，体大。早在殷商末期已有出现，' +
+            '洛阳出土的洛阳解放路一组4件编鎛，陕县后川2040号墓一组9件编鎛均属战国时期的鎛钟。据测音资料看，解放路编鎛音质较好，' +
+            '后川2040号墓编鎛除第九钟无侧鼓音外，其他均为双音钟。两例编鎛钟体皆为合瓦形，鎛口平齐，舞上有双龙或双蛇相对组成的扁钮，' +
+            '钲部有圆形短枚，整个形制近似于铃。这个时期的鎛钟已逐步发展成为一种与编钟相类似的具有旋律性能的乐器，' +
+            '其原有的仅奏骨干低音的和声性能也因鎛数的增加和音域的扩展而大大增强。')).
+            appendNode(genernateANode('1.2.3', '1.2.3.3', '钮钟', '钮钟特点是合瓦形，平舞，平腹，铣侈，于口微凹，舞上有一圆条形的长圆钮，体小。' +
+            '与甬钟相比最大的差别是改变了甬钟侧悬的甬。以钮代甬，使钟由侧悬改为直悬，从而可以更加保持钟的稳定性，提高和改善演奏的音质。')).
+            appendNode(genernateANode('1.2.3', '1.2.3.14', '编钟', '甬钟、鎛钟 、钮钟都可以单独组成编钟，也可以相互组成编钟，' +
+            '目前组合完整数量最全的是曾侯乙编钟它数量巨大，完整无缺。按大小和音高为序编成8组悬挂在3层钟架上。' +
+            '最上层3组19件为钮钟，形体较小，有方形钮，有篆体铭文，但文呈圆柱形，枚为柱状字较少，只标注音名。中下两层5组共45件为甬钟，有长柄，' +
+            '钟体遍饰浮雕式蟠虺纹，细密精致，外加楚惠王送的一枚镈钟共65枚。钟上有错金铭文，除“曾侯乙作持”外，都是关于音乐方面的。')).
+            appendNode(genernateANode('1', '1.3', '青铜兵器', '')).
+            appendNode(genernateANode('1', '1.4', '青铜劳动工具', '')).
+            appendNode(genernateANode('1', '1.5', '青铜装饰品', '')).
+            appendNode(genernateANode('1.1', '1.1.1', '觥', ''));
+
+    var qingtongTree = treeBuilder.rootNode;
+    qingtongTree.figureOut();
+//    qingtongTree.figureOut(1,sort);
+    tree(qingtongTree.maxDepth, qingtongTree.leafSize).nodes(qingtongTree).render();
 </script>
 
 </body>
