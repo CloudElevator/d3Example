@@ -98,6 +98,7 @@
                         (_width - _margins.left - _margins.right)
                     ]);
 
+             //diagonal用于绘制对角线的函数， .projection 用于设定它的投影。
             _diagonal = d3.svg.diagonal()
                     .projection(function (d) {
                         return [d.y, d.x];
@@ -110,8 +111,8 @@
         }
 
         function render(source) {
-            var nodes = _tree.nodes(_nodes).reverse();
-
+            var nodes = _tree.nodes(source).reverse();//将source的节点翻转
+//将nodes换成source，节点无法显示；将source换成nodes，节点出现的动画方式出现变化。
             renderNodes(nodes, source);
 
             renderLinks(nodes, source);
