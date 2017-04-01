@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5827cef7-a6dc-422a-9fe5-606c0840bac0" name="Default" comment="">
+      <change type="DELETED" beforePath="F:\git\d3Example\src\test\js\lsntree2.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\git\d3Example\src\test\青铜乐器_bak.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/chapter9/tree.html" afterPath="$PROJECT_DIR$/src/chapter9/tree.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/青铜乐器.html" afterPath="$PROJECT_DIR$/src/test/青铜乐器.html" />
     </list>
     <ignored path="d3-cookbook.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,21 +26,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="青铜乐器.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/青铜乐器.html">
+      <file leaf-file-name="ancientchina.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/ancientchina.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-24.653847">
-              <caret line="381" column="55" selection-start-line="381" selection-start-column="55" selection-end-line="381" selection-end-column="55" />
+            <state vertical-scroll-proportion="1.2505801">
+              <caret line="136" column="49" selection-start-line="136" selection-start-column="49" selection-end-line="136" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lsntree.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="lsntree.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/js/lsntree.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5427928">
-              <caret line="112" column="41" selection-start-line="112" selection-start-column="41" selection-end-line="112" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="216" column="48" selection-start-line="216" selection-start-column="48" selection-end-line="216" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -53,8 +55,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/chapter6/events.html" />
-        <option value="$PROJECT_DIR$/data/flare.json" />
         <option value="$PROJECT_DIR$/src/chapter6/filtering.html" />
         <option value="$PROJECT_DIR$/src/test/js/table.js" />
         <option value="$PROJECT_DIR$/src/test/table.html" />
@@ -99,11 +99,13 @@
         <option value="$PROJECT_DIR$/lib/d3.3.5.17.js" />
         <option value="$PROJECT_DIR$/src/chapter9/streamgraph.html" />
         <option value="$PROJECT_DIR$/src/chapter9/stacked-area-chart.html" />
-        <option value="$PROJECT_DIR$/src/chapter9/tree.html" />
         <option value="$PROJECT_DIR$/src/chapter9/treemap.html" />
         <option value="$PROJECT_DIR$/src/test/data/qingtongyueqi.json" />
         <option value="$PROJECT_DIR$/src/test/青铜乐器.html" />
+        <option value="$PROJECT_DIR$/src/test/js/lsntree_bak.js" />
+        <option value="$PROJECT_DIR$/src/chapter9/tree.html" />
         <option value="$PROJECT_DIR$/src/test/js/lsntree.js" />
+        <option value="$PROJECT_DIR$/src/test/ancientchina.html" />
       </list>
     </option>
   </component>
@@ -143,34 +145,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="d3-cookbook">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="d3-cookbook">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="lib">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -266,6 +240,52 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d3-cookbook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d3Example" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chapter9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="d3-cookbook">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="d3-cookbook">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="lib">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -297,20 +317,20 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1328" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
-  <component name="RunManager" selected="JavaScript Debug.青铜乐器.html">
+  <component name="RunManager" selected="JavaScript Debug.tree.html">
     <configuration default="false" name="streamgraph.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/chapter9/streamgraph.html">
-      <method />
-    </configuration>
-    <configuration default="false" name="tree.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/chapter9/tree.html">
-      <method />
-    </configuration>
-    <configuration default="false" name="treemap.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/chapter9/treemap.html">
       <method />
     </configuration>
     <configuration default="false" name="pack.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/chapter9/pack.html">
       <method />
     </configuration>
     <configuration default="false" name="青铜乐器.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/test/青铜乐器.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="ancientchina.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/test/ancientchina.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="tree.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/d3-cookbook/src/chapter9/tree.html">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -429,18 +449,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.streamgraph.html" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.tree.html" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.treemap.html" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.pack.html" />
-      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.青铜乐器.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.pack.html" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.青铜乐器.html" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.ancientchina.html" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.tree.html" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.青铜乐器.html" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.pack.html" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.streamgraph.html" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.treemap.html" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.tree.html" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.tree.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.ancientchina.html" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.青铜乐器.html" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.pack.html" />
+        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.streamgraph.html" />
       </list>
     </recent_temporary>
   </component>
@@ -466,7 +486,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21904762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -508,13 +528,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/css/dc.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/chapter6/filtering.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -774,19 +787,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/chapter9/tree.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="146" column="18" selection-start-line="146" selection-start-column="18" selection-end-line="146" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/chapter9/treemap.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -794,7 +798,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -818,7 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.78306264">
           <caret line="50" column="226" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="226" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -826,7 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -834,7 +835,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.4060326">
           <caret line="122" column="28" selection-start-line="122" selection-start-column="17" selection-end-line="122" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -842,9 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.5990992">
           <caret line="70" column="67" selection-start-line="70" selection-start-column="55" selection-end-line="70" selection-end-column="67" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -852,7 +849,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.032657657">
           <caret line="27" column="31" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -864,18 +860,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/青铜乐器.html">
+    <entry file="file://$PROJECT_DIR$/src/test/js/lsntree_bak.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-24.653847">
-          <caret line="381" column="55" selection-start-line="381" selection-start-column="55" selection-end-line="381" selection-end-column="55" />
+        <state vertical-scroll-proportion="-1.6948198">
+          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chapter9/tree.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6113689">
+          <caret line="188" column="75" selection-start-line="188" selection-start-column="31" selection-end-line="188" selection-end-column="75" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/js/lsntree.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5427928">
-          <caret line="112" column="41" selection-start-line="112" selection-start-column="41" selection-end-line="112" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="216" column="48" selection-start-line="216" selection-start-column="48" selection-end-line="216" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/ancientchina.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2505801">
+          <caret line="136" column="49" selection-start-line="136" selection-start-column="49" selection-end-line="136" selection-end-column="49" />
           <folding />
         </state>
       </provider>

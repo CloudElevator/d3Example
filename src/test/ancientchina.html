@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>青铜乐器分类树</title>
+    <title>古代中国的器物分类</title>
     <link rel="stylesheet" type="text/css" href="../../css/styles.css"/>
     <script type="text/javascript" src="../../lib/d3.js"></script>
-    <script type="text/javascript" src="js/lsntree2.js"></script>
+    <script type="text/javascript" src="js/lsntree.js"></script>
     <style type="text/css">
         .node circle {
             cursor: pointer;
@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<p>青铜乐器分类树</p>
+<p>古代中国的器物分类</p>
 <script type="text/javascript">
     /**根据字符串的长度、字号大小，自动将其分割成若干段，实现自动换行*/
     function splitByLine(str, max, fontsize) {
@@ -54,38 +54,23 @@
 
 </script>
 <script type="text/javascript">
-    function flatten(multiTree) { // <-A
-        var nodes = [];
-        function traverse(node, depth) {
-            if (node.children) {
-                node.children.forEach(function(child) {
-                    child.parent = node;
-                    traverse(child, depth + 1);
-                });
-            }
-            node.depth = depth;
-            nodes.push(node);
-        }
-        multiTree.forEach(function(root) {
-            traverse(root, 1);
-        });
-        return nodes;
-    }
     /**
      * 构建树
+     * @param rootSize 根节点数
      * @param maxDepth 最大深度
      * @param leafElementCount 叶子节点的个数
      * */
-    function tree(maxDepth, leafElementCount) {
+    function tree(rootSize, maxDepth, leafElementCount) {
         var jiangejuli = 180;
+        var jiangejuli2 = 18;
         var maxLabelLength = Math.round((jiangejuli - 100) / 3.5);
         var _chart = {};
 
-        var _width = (maxDepth + 1) * jiangejuli, _height = leafElementCount * 18,
+        var _width = (maxDepth + 1) * jiangejuli, _height = leafElementCount * jiangejuli2 + (rootSize - 1) * 20,
                 _margins = {top: 30, left: 120, right: 30, bottom: 30},
                 _svg,
-                _nodes,
-                _i = 0,
+                _i,
+                _rootNodes,//存放所有根节点
                 _tree,
                 _diagonal,
                 _bodyG;
@@ -121,41 +106,48 @@
                         return [d.y, d.x];
                     });
 
-            _nodes.x0 = (_height - _margins.top - _margins.bottom) / 2;
-            _nodes.y0 = 0;
+            _render(null);
 
-            render(_nodes);
         }
 
-        function render( source) {
-            //var nodes = _tree.nodes(source).reverse();
-            var nodes =flatten(source.children);
-            renderNodes(nodes, source.children);
-            renderLinks(nodes, source.children);
+        function _render(clickNode) {
+
+            _rootNodes.x0 = (_height - _margins.top - _margins.bottom) / 2;
+            _rootNodes.y0 = 0;
+
+            var nodes = _tree.nodes(_rootNodes).reverse();
+            var _rIndex=-1;
+            nodes.forEach(function (d,index) {
+                d.y = (d.depth-1) * jiangejuli;//两层之间间隔180
+                if(d.id==undefined){
+                    _rIndex=index;
+                }
+            });
+            nodes.splice(_rIndex,1);//去掉第一个节点
+
+            if(clickNode==undefined||clickNode==null){
+                clickNode=_rootNodes;
+            }
+
+            renderNodes(nodes, clickNode);
+            renderLinks(nodes, clickNode);
         }
 
         function renderNodes(nodes, source) {
-            nodes.forEach(function (d) {
-                d.y = d.depth * jiangejuli;//两层之间间隔180
-            });
-
             var node = _bodyG.selectAll("g.node")
                     .data(nodes, function (d) {
-                        return d.id;
+                        return d.id || (d.id = ++_i);
                     });
 
             var nodeEnter = node.enter().append("svg:g")
                     .attr("class", "node")
-                    .filter(function (d, i) { //  没有自定义属性的就不要显示了
-                        return d.customAttrs != undefined;
-                    })
                     .attr("transform", function (d) {
                         return "translate(" + source.y0
                                 + "," + source.x0 + ")";
                     })
                     .on("click", function (d) {
                         toggle(d);
-                        render(d);
+                        _render(d);
                     });
             //为所有的节点添加title属性（by 刘胜楠）
             nodeEnter.append("svg:title")
@@ -182,8 +174,14 @@
 
             var nodeExit = node.exit().transition()
                     .attr("transform", function (d) {
-                        return "translate(" + source.y
-                                + "," + source.x + ")";
+                        if (d.isRoot()) {
+                            return "translate(" + d.y
+                                    + "," + d.x + ")";
+                        } else {
+                            return "translate(" + d.parentNode.y
+                                    + "," + d.parentNode.x + ")";
+                        }
+
                     })
                     .remove();
 
@@ -201,11 +199,11 @@
         function renderLabels(nodeEnter, nodeUpdate, nodeExit) {
             nodeEnter.append("svg:text")
                     .attr("x", function (d) {
-                        return d.children ;
+                        return d.children || d._children ? -10 : 10;
                     })
                     .attr("dy", ".35em")
                     .attr("text-anchor", function (d) {
-                        return d.children ;
+                        return d.children || d._children ? "end" : "start";
                     })
                     .text(function (d) {
                         var showName = d.customAttrs.name;
@@ -230,9 +228,6 @@
                     });
 
             link.enter().insert("svg:path", "g")
-                    .filter(function (d, i) { //  没有自定义属性的就不要显示了
-                        return d.customAttrs != undefined;
-                    })
                     .attr("class", "link")
                     .attr("d", function (d) {
                         var o = {x: source.x0, y: source.y0};
@@ -284,82 +279,16 @@
             _margins = m;
             return _chart;
         };
-
-        _chart.nodes = function (n) {
-            if (!arguments.length) return _nodes;
-            _nodes = n;
+        _chart.rootNodes = function (n) {
+            if (!arguments.length) return _rootNodes;
+            _rootNodes = n;
             return _chart;
         };
-
         return _chart;
     }
 
 </script>
 <script>
-    /**树节点的操作*/
-    var treeFun = function () {
-        var _tree = {};
-        _tree.size = 0;//树的节点数
-        _tree.leafSize = 0;//叶子节点数
-        _tree.maxDepth = 0;//深度
-        _tree.curDepth = 1;//当前深度，因为是根节点，所以只能是1
-        _tree.findNodeById = function (id) {
-            return _tree.findSubNodeById(_tree, id);
-        }
-        _tree.findSubNodeById = function (parentNode, id) {
-            if (parentNode.id != undefined && parentNode.id == id) {
-                return parentNode;
-            } else if (parentNode.children != undefined && parentNode.children.length > 0) {
-                for (var i = 0; i < parentNode.children.length; i++) {
-                    var _oneNode = parentNode.children[i];
-                    var _targetOne = _tree.findSubNodeById(_oneNode, id);
-                    if (_targetOne != null && _targetOne != undefined) {
-                        return _targetOne;
-                    }
-                }
-            }
-            return null;
-        }
-        _tree.appendNode = function (parentNodeId, id, name, detail) {
-            var _parentNode;
-            if (parentNodeId == null || parentNodeId == '') {
-                _tree.id = id;
-                _tree.name = name;
-                _tree.detail = detail;
-                if (_tree.size < 1) {
-                    _tree.size = 1;
-                    _tree.leafSize = 1;
-                    _tree.maxDepth = 1;
-                }
-                return _tree;
-            } else {
-                _parentNode = _tree.findNodeById(parentNodeId);
-                if (_parentNode != null && _parentNode != undefined) {
-                    var _currentNode = _tree.findNodeById(id);
-                    if (_currentNode == null || _currentNode == undefined) {
-                        _currentNode = {};
-                        if (_parentNode.children == undefined) {
-                            _parentNode.children = [];
-                        } else {
-                            _tree.leafSize++;//叶子数量自增
-                        }
-                        _currentNode.curDepth = _parentNode.curDepth + 1;//计算当前节点的深度
-                        _parentNode.children.push(_currentNode);
-                        _tree.size++;//总节点数自增
-                        if (_tree.maxDepth < _currentNode.curDepth) {
-                            _tree.maxDepth = _currentNode.curDepth;
-                        }
-                    }
-                    _currentNode.id = id;
-                    _currentNode.name = name;
-                    _currentNode.detail = detail;
-                }
-            }
-            return _tree;
-        }
-        return _tree;
-    }
-
     var genernateANode = function (parentId, id, name, detail) {
         var _node = {};
         _node.id = id;
@@ -406,18 +335,27 @@
             '其原有的仅奏骨干低音的和声性能也因鎛数的增加和音域的扩展而大大增强。')).
             appendNode(genernateANode('1.2.3', '1.2.3.3', '钮钟', '钮钟特点是合瓦形，平舞，平腹，铣侈，于口微凹，舞上有一圆条形的长圆钮，体小。' +
             '与甬钟相比最大的差别是改变了甬钟侧悬的甬。以钮代甬，使钟由侧悬改为直悬，从而可以更加保持钟的稳定性，提高和改善演奏的音质。')).
-            appendNode(genernateANode('1.2.3', '1.2.3.14', '编钟', '甬钟、鎛钟 、钮钟都可以单独组成编钟，也可以相互组成编钟，' +
+            appendNode(genernateANode('1.2.3', '1.2.3.4', '编钟', '甬钟、鎛钟 、钮钟都可以单独组成编钟，也可以相互组成编钟，' +
             '目前组合完整数量最全的是曾侯乙编钟它数量巨大，完整无缺。按大小和音高为序编成8组悬挂在3层钟架上。' +
             '最上层3组19件为钮钟，形体较小，有方形钮，有篆体铭文，但文呈圆柱形，枚为柱状字较少，只标注音名。中下两层5组共45件为甬钟，有长柄，' +
             '钟体遍饰浮雕式蟠虺纹，细密精致，外加楚惠王送的一枚镈钟共65枚。钟上有错金铭文，除“曾侯乙作持”外，都是关于音乐方面的。')).
             appendNode(genernateANode('1', '1.3', '青铜兵器', '')).
             appendNode(genernateANode('1', '1.4', '青铜劳动工具', '')).
             appendNode(genernateANode('1', '1.5', '青铜装饰品', '')).
-            appendNode(genernateANode('1.1', '1.1.1', '觥', ''));
+            appendNode(genernateANode('1.1', '1.1.1', '觥', '')).
+            appendNode(genernateANode('2', '2.1', '玉璧', '')).
+            appendNode(genernateANode('2', '2.2', '玉琮', '')).
+            appendNode(genernateANode('2', '2.3', '玉圭', '')).
+            appendNode(genernateANode('2', '2.4', '玉璋', '')).
+            appendNode(genernateANode('2', '2.5', '玉琥', '')).
+            appendNode(genernateANode('2', '2.6', '玉璜', '')).
+            appendNode(genernateANode('2', '2.7', '玉戈', '')).
+            appendNode(genernateANode('2', '2.8', '玉镯', '')).
+            appendNode(genernateANode('2', '2.9', '玉环', ''));
 
-    treeBuilder.figureOut();
-    //    treeBuilder.figureOut(1,sort);
-    tree(treeBuilder.maxDepth, treeBuilder.leafSize).nodes(treeBuilder.rootNode).render();
+    treeBuilder.renderNodes();
+    //    treeBuilder.renderNodes(sort);
+    tree(treeBuilder.rootSize, treeBuilder.maxDepth, treeBuilder.leafSize).rootNodes(treeBuilder.getVirtualRoot()).render();
 </script>
 
 </body>
